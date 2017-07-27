@@ -10,7 +10,7 @@ import { AuthService } from './../../core/service/auth.service'
 import { PromiseErrorHandler } from './../../core/error/error.handler'
 import { IUserModel } from './user.model'
 import { IRoom } from '../../../models';
-import { AdalAuthService } from './../../core';
+import { AdalAuthService, NotificationService } from './../../core';
 
 @Injectable()
 export class UserService {
@@ -21,7 +21,7 @@ export class UserService {
     userDetails: IUserModel;
     rooms: IRoom[] = [];
 
-    constructor(private http: Http, private router: Router, private authService: AuthService, private _adalAuthService: AdalAuthService) {
+    constructor(private http: Http, private router: Router, private authService: AuthService, private _adalAuthService: AdalAuthService, private readonly _notificationService: NotificationService) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json');
         this.headers = this.authService.getAuthHeaders(this.headers);
@@ -39,6 +39,9 @@ export class UserService {
                         // set user details
                         this.authService.setUserDetails(response.result);
                         this.userDetails = this.getUserDetails();
+                        const userName = (<any>this.userDetails).name;
+                        // set notification
+                        this._notificationService.notify(`Welcome back ${userName}`);
                         this.router.navigate(['']);
                     }
                 }

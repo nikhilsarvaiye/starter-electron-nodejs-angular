@@ -17,9 +17,15 @@ export class ReportsComponent {
        {id: 2, name: "Testing"},
        {id: 3, name: "BI"}
       ];
+    empAvailabilityData=data.TodaysAvailabilityStatus;
+    chartFilterOptions=[
+       {id: 0, name: "Today"},
+       {id: 1, name: "This Week"},
+       {id: 2, name: "This Year"},
+    ];
+    selectedfilterValue=0;
     selectedValue = 0;
     onChange(newValue) {
-    console.log(newValue);
     if(newValue==0)
     this.empAllocationData=data.AllCount;
     if(newValue==1)
@@ -29,22 +35,31 @@ export class ReportsComponent {
      else 
      this.empAllocationData=data.BI;
     this.setEmployeeAllocationChart();
-   console.log(this.employeeAllocationChart["series"]);
-   
-
     this.selectedValue = newValue;
+}
+onOptionChange(value){
+   if(value==0)
+    this.empAvailabilityData=data.TodaysAvailabilityStatus;
+     if(value==1)
+    this.empAvailabilityData=data.ThisWeekAvailabilityStatus;
+    else
+    this.empAvailabilityData=data.ThisMonthAvailabilityStatus;
+    this.setAvailabilityChart();
+    this.selectedfilterValue=value;
 }
   constructor() { 
     this.setAvailabilityChart();
-     this.setCurrentStatusChart();
+    this.setSentimentAnalysisChart();
      this.setEmployeeAllocationChart();
+     this.setOverallProdChart();
   }
+
   setAvailabilityChart() {
 this.availabilityChart={
   chart:{
     type:'pie'
   },
-  title:{text: 'Employee Statistics in Percentage'},
+  title:{text: 'Availability Statistics of Employees '},
   plotOptions:{
            pie: {
                 allowPointSelect: true,
@@ -55,15 +70,33 @@ this.availabilityChart={
                 showInLegend: true
            }
   },
-  series: data.AvailabilityStatus
+  series: this.empAvailabilityData
 };
 }
-setCurrentStatusChart() {
-    this.currentStatusChart = {
+setOverallProdChart(){
+this.productivityChart={
+  chart:{
+    type:'spline'
+  },
+  title:{text: 'Productive Hours Statistics'},
+   xAxis: {
+        categories: ['10AM', '11AM', '12PM', '1PM', '2PM', '3PM',
+            '4PM', '5PM', '6PM', '7PM']
+    },
+    yAxis:{
+       title: {
+            text: 'No. of Employees'
+        }
+    },
+  series: data.ProductivityHoursCount
+};
+}
+setSentimentAnalysisChart() {
+    this.sentimentStats = {
       chart: {
         type: 'column'
       },
-      title: { text: 'Current Employee Status :' },
+      title: { text: 'Sentiment Analysis Statistics' },
        yAxis: {
          
         title: {
@@ -80,7 +113,7 @@ setCurrentStatusChart() {
                 showInLegend: true
             }
         },
-      series: data.CurrentEmployeeStatus
+      series: data.SentimentAnalysisStats
     };
   }
 
@@ -110,8 +143,10 @@ setCurrentStatusChart() {
     };
   }
 availabilityChart: Object;
-currentStatusChart: Object;
+sentimentStats: Object;
 employeeAllocationChart:Object;
+productivityChart:Object;
+sentimentAnalysisStats=Object;
   onChatRoomSelect(event): void { 
   }
   ngAfterViewInit() {

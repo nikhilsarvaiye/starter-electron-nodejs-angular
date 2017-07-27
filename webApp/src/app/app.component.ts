@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation } from '@angular/core';
+import { NotificationService } from './core';
 
 @Component({
   encapsulation: ViewEncapsulation.None,
@@ -9,7 +10,9 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 export class AppComponent {
 
-  constructor() {
+  constructor(private readonly _notificationService: NotificationService) {
+    
+    // _notificationService.notify('Test Message');
   }
 
 }

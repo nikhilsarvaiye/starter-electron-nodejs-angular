@@ -1,9 +1,28 @@
 
 
 export const data = {
-    "AvailabilityStatus":[
-    { "name": "Availability Status", "data": [{"name":"Available","y":245, "sliced": true, "selected": true},{"name":"Not Available","y":15},{"name":"On Leave","y":55},{"name":"Work From Home","y":65}]}
+    "TodaysAvailabilityStatus":[
+    { "name": "Availability Status", "data": [{"name":"Available","y":245, "sliced": true, "selected": true},{"name":"Not Available","y":15},{"name":"On Leave","y":155},{"name":"Work From Home","y":65}]}
   ],
+   "ThisWeekAvailabilityStatus":[
+    { "name": "Availability Status", "data": [{"name":"Available","y":345, "sliced": true, "selected": true},{"name":"Not Available","y":45},{"name":"On Leave","y":285},{"name":"Work From Home","y":65}]}
+  ],
+   "ThisMonthAvailabilityStatus":[
+    { "name": "Availability Status", "data": [{"name":"Available","y":294, "sliced": true, "selected": true},{"name":"Not Available","y":35},{"name":"On Leave","y":395},{"name":"Work From Home","y":65}]}
+  ],
+  "ProductivityHoursCount":[{
+        name: 'Online',
+           data: [120,324,353,454,576,487,356,226,227,112],marker: {symbol: 'square'}
+    }, {
+        name: 'Offline',
+        data: [214,27,234,116,227,243,123,276,114,234 ], marker: {symbol: 'diamond'}
+    }, {
+        name: 'Idle',
+        data: [12,137,244,256,147,223,213,236,245,167],marker: {symbol: 'circle'}
+    }],
+      "SentimentAnalysisStats":[{
+        name: 'Positive',data: [34]}, { name: 'Anticipation',data: [35]}, {name: 'Fear', data: [13]}, {name: 'Surprise',data: [14]},{name: 'Negative',data: [12]},
+    ],
   
   "CurrentEmployeeStatus":[ 
       { "name"  : "Active", "data" :[262]}, { "name"  : "Idle", "data" :[128]}, { "name"  : "Offline", "data" :[77]}

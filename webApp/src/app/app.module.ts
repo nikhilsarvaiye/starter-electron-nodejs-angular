@@ -16,7 +16,7 @@ import { ROUTES } from './app.routes';
 import { AppComponent } from './app.component';
 
 // Core components
-import { AuthGuard, LoginGuard, AuthService, AdalAuthService, HttpInterceptor } from './core';
+import { AuthGuard, LoginGuard, AuthService, AdalAuthService, HttpInterceptor, NotificationService } from './core';
 
 // Shared module
 import { SharedModule } from './shared';
@@ -54,6 +54,7 @@ import { ReportsModule } from './modules/reports';
     AuthGuard, 
     LoginGuard,
     AuthService,
+    NotificationService,
     AdalAuthService,
     { 
       provide: Http, 
