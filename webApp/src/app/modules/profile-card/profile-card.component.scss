@@ -1,0 +1,133 @@
+
+/* profile card */
+.dashboard {
+    float: left;
+    width: 290px;
+}
+.module {
+    position: relative;
+    margin-bottom: 10px;
+}
+.DashboardProfileCard {
+    background: #fff;
+}
+.DashboardProfileCard-bg img {
+    height: 40px;
+    width: 220px;
+    display: none;
+}
+.u-bgUserColor, .u-bgUserColorHover:hover, .u-bgUserColorHover:focus {
+    background-color: #fff !important;
+}
+.DashboardProfileCard-bg {
+    background-size: 100%;
+    height: 40px;
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+    background-position: 0 50%;
+    width: 100%;
+    padding: 0;
+}
+.u-block {
+    display: block!important;
+}
+.u-inlineBlock {
+    display: inline-block!important;
+    max-width: 100%;
+}
+.DashboardProfileCard-avatarLink {
+    background-color: #fff;
+    border-radius: 50%;
+    margin: -30px 0 0 8px;
+    padding: 1px;
+    vertical-align: bottom;
+    img {
+        border-radius: 50%;
+        width: 55px;
+    }
+}
+.DashboardProfileCard-userFields {
+    position: absolute;
+    top: 15px;
+    left: 75px;
+    width: 185px;   
+    width: auto;   
+    .DashboardProfileCard-name{
+        a {
+            color: #444;
+            :hover {
+                color: #444;
+            }
+        }
+        ul.status-menu.dropdown-menu {
+            margin-top: -30px !important; 
+            margin-left: 1650px !important;
+        }
+    }
+}
+
+.ProfileCardStats {
+    padding-bottom: 12px;
+    padding-left: 14px;
+    padding-right: 14px;
+}
+.DashboardProfileCard .ProfileCardStats {
+    padding-top: 16px;
+}
+.Arrange {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    display: table;
+    margin: 0;
+    min-width: 100%;
+    padding: 0;
+    table-layout: auto;
+}
+.ProfileCardStats-stat {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    line-height: 1;
+    overflow: hidden;
+    transition: all .15s ease-in-out;
+}
+.Arrange-sizeFill, .Arrange-sizeFit {
+    display: table-cell;
+    padding: 0;
+    vertical-align: top;
+}
+.Arrange--equal {
+    table-layout: fixed;
+}
+.Arrange--bottom .Arrange-sizeFill, .Arrange--bottom .Arrange-sizeFit {
+    vertical-align: bottom;
+}
+.Arrange--equal>.Arrange-sizeFill, .Arrange--equal>.Arrange-sizeFit {
+    width: 1%;
+}
+.u-block {
+    display: block!important;
+}
+.u-linkClean, .u-linkClean:hover, .u-linkClean:focus, .u-linkClean:active {
+    text-decoration: none!important;
+}
+.u-textUserColor, .u-textUserColorHover:hover, .u-textUserColorHover:hover .ProfileTweet-actionCount, .u-textUserColorHover:focus {
+    color: #1B95E0 !important;
+}
+.ProfileCardStats-statLabel {
+    color: #a94442;
+    font-size: 12px;
+    font-weight: bold;
+    letter-spacing: .02em;
+    overflow: hidden;
+    transition: color .15s ease-in-out;
+}
+.ProfileCardStats-statValue {
+    display: block;
+    font-size: 14px;
+    /*font-weight: bold;*/
+    padding-top: 5px;
+    padding-left: 2px;
+    color: #444;
+    transition: color .15s ease-in-out;
+}
+    

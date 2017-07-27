@@ -1,0 +1,7 @@
+**/node_modules/
+/dist
+tmp/
+__MACOSX/
+.DS_Store
+Thumbs.db
+.env

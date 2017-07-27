@@ -1,0 +1,45 @@
+<div class="header">
+  nConnect
+</div>
+<!-- sidebar panel -->
+<div class="sidebar-panel offscreen-left">
+
+  <brand-header></brand-header>
+
+  <quick-launch-apps></quick-launch-apps>
+
+  <profile-card></profile-card>
+
+  <!--<main-nav></main-nav>-->
+  
+</div>
+<!-- /sidebar panel -->
+
+<div class="main-panel">
+
+  <div class="header navbar">
+    <header></header>
+  </div>
+  <div class="main-content">
+<table>
+  <tr>
+  <td >
+    <chart [options]="availabilityChart"></chart>
+  </td>
+    <td >
+       <chart [options]="currentStatusChart"></chart>
+    </td>
+  </tr>
+  <tr>      
+    <td colspan='2' >
+      <div>
+    <select [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)" >     
+        <option *ngFor="let x of departments" [value]="x.id">{{x.name}}</option>
+    </select> 
+    </div>
+    </td>
+  </tr>
+</table>
+  </div>
+   <chart [options]="employeeAllocationChart" ></chart>
+</div>

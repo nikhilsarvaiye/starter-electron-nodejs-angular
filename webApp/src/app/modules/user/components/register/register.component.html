@@ -1,0 +1,50 @@
+<!--<pre>
+  {{ diagnostic }}
+</pre>-->
+
+<modal>
+</modal>
+
+<!-- Registration form -->
+
+<div class="app signup usersession">
+  <div class="session-wrapper">
+    <div class="page-height-o row-equal align-middle">
+      <div class="column">
+        <div class="card bg-white no-border">
+          <div class="card-block">
+            <form (ngSubmit)="submit()" [formGroup]="form" role="form" class="form-layout">
+              <div class="text-center m-b">
+                <h4 class="text-uppercase">Register Now</h4>
+                <p>Join a growing community.</p>
+              </div>
+              <div class="form-inputs">
+                <div class="name">
+                  <label class="text-uppercase">Name</label>
+                  <input type="text" formControlName="firstname" class="form-control input-lg first" placeholder="First" required>
+                  <input type="text" formControlName="lastname" class="form-control input-lg" placeholder="Last" required>
+                </div>
+                <label class="text-uppercase">Your current email address</label>
+                <input type="email" formControlName="email" class="form-control input-lg" placeholder="Email address" required>
+                <label class="text-uppercase">Choose your username</label>
+                <input type="text" formControlName="user_id" class="form-control input-lg" placeholder="Username" required>
+                <label class="text-uppercase">Create a password</label>
+                <input type="password" formControlName="password" class="form-control input-lg" placeholder="Password" required>
+                <label class="text-uppercase">Confirm your password</label>
+                <input type="password" formControlName="confirmPassword" class="form-control input-lg" placeholder="Confirm password" required>
+              </div>
+              <button class="btn btn-primary btn-block btn-lg m-b" type="submit">Create Account</button>
+              <div class="divider">
+                <span>OR</span>
+              </div>
+              <a class="btn btn-block no-bg btn-lg m-b" href="/login">Login</a>
+              <p class="text-center"><small><em>By clicking Create account you agree to our <a href="#">terms and conditions</a></em></small>
+              </p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- /registration form -->

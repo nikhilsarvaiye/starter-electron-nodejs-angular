@@ -1,0 +1,179 @@
+.chat-panel.conversation-open {
+    position: relative;
+    margin-left: 0;
+    margin-top: 0;
+    width: 640px;
+    z-index: 0;
+    display: inherit;
+    .chat-conversation,
+    .chat-back,
+    .chat-panel .chat-header,
+    .chat-conversation-content {
+        position: relative;
+        display: block;
+        background-color: #f6f6f6;
+    }
+    .chat-conversation-footer {
+        position: absolute;
+        background: #fff;
+    }
+    .chat-conversation .chat-conversation-content {
+        top: 0;
+        bottom: 0;
+        height: 665px;
+        padding-top: 60px;
+        padding-bottom: 135px;
+    }
+    .chat-panel .chat-conversation .chat-input {
+        left: 0;
+    }
+    .chat-conversation .chat-send {
+        top: 0;
+        padding: 10px;
+        margin-bottom: 10px;
+    }
+    .chat-conversation .chat-input-tool {
+        padding: 10px;
+        margin-bottom: 10px;
+        float: right;
+    }
+    .chat-conversation .chat-input-textarea,
+    .chat-conversation .chat-input-textarea:focus,
+    .chat-conversation .chat-input-textarea:active,
+    .chat-conversation .chat-input-textarea::selection {
+        border: none;
+    }
+    .chat-conversation .chat-input-textarea {
+        border-top: 1px solid #a94442;
+        border-bottom: 1px solid #ddd;
+        width: 100%;
+        height: 75px;
+        resize: none;
+    }
+    .chat-conversation .chat-conversation-user.me .chat-conversation-message {
+        margin-right: 10px;
+    }
+    .chat-header {
+        z-index: 1;
+        background: #fff;
+        border-bottom: 1px solid #eee;
+        height: 50px;
+        .chat-back {
+            top: 10px;
+        }
+        .chat-header-title {
+            position: absolute;
+            padding: 26px;
+            position: absolute;
+            font-weight: 600;
+        }
+        .user-title {
+            margin: 8px 10px;
+            .details {
+                float: left;
+                width: 75%;
+                .name {
+                    font-weight: bold;
+                    padding: 0;
+                    height: 17px;
+                }
+                .about {
+                    font-size: 12px;
+                    font-style: italic;
+                    color: #444;
+                     ::hover {
+                        color: #444;
+                    }
+                }
+                .member-link {
+                    font-size: 12px;
+                    margin-top: 1px;
+                    :hover {
+                        text-decoration: underline;
+                    }
+                    ul {
+                        margin-left: 50px;
+                        padding: 10px 0px;
+                        a {
+                            padding: 2px 15px;
+                        }
+                    }
+                }
+                .edit {
+                    color: #2672ec;
+                    text-decoration: underline;
+                    font-size: 12px;
+                    margin-left: 20px;
+                }
+                .cancel {
+                    color: #444;
+                    margin-left: 5px; 
+                }
+                .title-edit {
+                    border-radius: 10px;
+                    font-size: 12px;
+                }
+                img {
+                    width: 35px;
+                    float: left;
+                    margin-right: 8px;
+                }
+                .status,
+                .status:hover {
+                    color: #444;
+                }
+                .status-online,
+                .status-away,
+                .status-no-disturb,
+                .status-invisible,
+                .status-offline {
+                    display: inline-block;
+                    width: 8px;
+                    height: 8px;
+                    border: 1px solid #e2e2e2;
+                    border-radius: 8px;
+                    position: absolute;
+                    top: 1px;
+                    margin-left: 5px;
+                }
+                .status-online {
+                    border-color: #6FC080;
+                    background-color: #6FC080;
+                }
+                .status-away {
+                    border-color: #F2B776;
+                    background-color: #F2B776;
+                }
+                .status-no-disturb {
+                    border-color: #DD6777;
+                    background-color: #DD6777;
+                }
+                .status-invisible,
+                .status-offline {
+                    border-color: #6FC080;
+                    background-color: white;
+                }
+            }
+            .actions {
+                float: right;
+                margin-right: 165px;
+                padding-top: 3px;
+                button {
+                    border-radius: 15px;
+                    margin: 0px 3px;
+                    border: none;
+                }
+                button.audio {
+                    padding: 8px 10px;
+                    background: #2672ec;
+                    border-color: #2672ec;
+                }
+                button.video {
+                    padding: 8px;
+                    background: #444;
+                    border-color: #444;
+                }
+            }
+        }
+    }
+}

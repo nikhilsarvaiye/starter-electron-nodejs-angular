@@ -1,0 +1,15 @@
+<div class="section policy-section">
+    <div class="row policy-header">
+        <div class="col-md-12">
+            <p class="title no-margin">Policies</p>
+            <p class="description no-margin margin-bottom-10">Organizational Policies as on year {{year}}.</p>
+        </div>
+    </div>
+    <div class="row policy-summary margin-bottom-10">
+        <div class="col-md-12" *ngFor="let policy of policies">
+            <h4 class="title">{{policy.title}}</h4>
+            <p class="date">{{policy.type}}</p>
+            <p class="description">{{policy.description}}</p>
+        </div>
+    </div>
+</div>

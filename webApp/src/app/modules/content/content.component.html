@@ -1,0 +1,31 @@
+<div class="header">
+  nConnect
+</div>
+<!-- sidebar panel -->
+<div class="sidebar-panel offscreen-left">
+
+  <brand-header></brand-header>
+
+  <quick-launch-apps></quick-launch-apps>
+
+  <profile-card (newChannel)="onNewChannel($event)"></profile-card>
+
+  <!--<main-nav></main-nav>-->
+  <chat-list #chatListComponent (select)="onChatRoomSelect($event)"></chat-list>
+
+</div>
+<!-- /sidebar panel -->
+
+<div class="main-panel">
+
+  <div class="header navbar">
+    <header></header>
+  </div>
+  <div class="main-content">
+    <div *ngFor="let chat of chats" class="ripple chat-room">
+      <div [hidden]="!chat.showChatBox">
+        <chat-box [render]="chat.showChatBox" [room]="chat"></chat-box>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+import ConnectRoles = require('connect-roles');

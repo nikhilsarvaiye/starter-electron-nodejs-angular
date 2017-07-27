@@ -2,13 +2,13 @@
 <html>
 
 <head>
-  <meta charset="UTF-8">
-  <title>Electron-With-Express</title>
-
-  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=VT323" />
-  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-T8Gy5hrqNKT+hzMclPo118YTQO6cYprQmhrYwIiQ/3axmI1hQomh7Ud2hPOy8SP1"
-    crossorigin="anonymous">
-
+  <base href="/">
+  <meta charset="utf-8">
+  <meta name="description" content="">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+  <title>nConnect</title>
+  <link href="//fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic" rel="stylesheet" type="text/css">
   <style>
     body {
       overflow: hidden;
@@ -51,77 +51,32 @@
 </head>
 
 <body>
+
   <div id="loading">
     <i class="fa fa-spinner fa-pulse fa-3x fa-fw"></i>
   </div>
-  <div id="serverLog"></div>
-  <webview id="expressApp" class="expressApp"></webview>
+
+  <app></app>
 
   <script>
-    window.$ = window.jQuery = require("./node_modules/jquery/dist/jquery.min.js");
-
-    const expressAppUrl = "http://127.0.0.1:3000",
-      spawn = require("child_process").spawn,
-      // For electron-packager change cwd in spawn to app.getAppPath() and
-      // uncomment the app require below
-      // app = require('electron').remote.app,
-      node = spawn(".\\node.exe", ["./express-app/bin/www"], {
-        cwd: process.cwd()
-        // cwd: app.getAppPath()
-      }),
-      request = require("request"),
-      _ = require("lodash"),
-      key = require("keymaster"),
-      $serverLog = $("#serverLog"),
-      $expressApp = $("#expressApp"),
-      $loading = $("#loading");
-
-    key("f1", () => {
-      if ($serverLog.css("display") === "none") {
-        $serverLog.css("display", "block");
-        $expressApp.addClass("expressAppHide");
-      } else {
-        $expressApp.removeClass("expressAppHide");
-        $serverLog.css("display", "none");
+    // var fs = require(fs);
+    try {
+      if (require) {
+        var electron = require('electron') // http://electron.atom.io/docs/api
+        var path = require('path')         // https://nodejs.org/api/path.html
+        var url = require('url')
+        var os = require('os') // https://nodejs.org/api/os.html
+        var cpus = os.cpus()
+        window.cpus = os.cpus()
+        // alert(JSON.stringify(cpus));
+        // alert(JSON.stringify(process.versions));;
       }
-    });
-
-    function strip(s) {
-      // regex from: http://stackoverflow.com/a/29497680/170217
-      return s.replace(/[\u001b\u009b][[()#;?]*(?:[0-9]{1,4}(?:;[0-9]{0,4})*)?[0-9A-ORZcf-nqry=><]/g, '');
     }
-
-    function redirectOutput(x) {
-      let lineBuffer = "";
-
-      x.on('data', function (data) {
-        lineBuffer += data.toString();
-        let lines = lineBuffer.split("\n");
-
-        _.forEach(lines, (l) => {
-          if (l !== "") {
-            $serverLog.append(strip(l) + "<br/>");
-          }
-        });
-
-        lineBuffer = lines[lines.length - 1];
-      });
+    catch(e) {
+      
     }
-
-    redirectOutput(node.stdout);
-    redirectOutput(node.stderr);
-
-    let checkServerRunning = setInterval(() => {
-      request(expressAppUrl, (error, response, body) => {
-        if (!error && response.statusCode == 200) {
-          $expressApp.attr("src", expressAppUrl);
-          $loading.css("display", "none");
-          $expressApp.css("display", "block");
-          clearInterval(checkServerRunning);
-        }
-      });
-    }, 1000);
   </script>
+
 </body>
 
 </html>

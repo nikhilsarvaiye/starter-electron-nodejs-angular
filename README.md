@@ -99,12 +99,3 @@ Then run
 ```
 npm start
 ```
-
-## Author(s)
-
-Frank Hale &lt;frankhale@gmail.com&gt;  
-14 May 2017
-
-## License
-
-GNU GPL v3 - see [LICENSE](LICENSE)

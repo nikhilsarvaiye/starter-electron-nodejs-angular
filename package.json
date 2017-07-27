@@ -9,10 +9,12 @@
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
+    "package": "electron-packager .",
     "start": "node start-electron.js"
   },
   "dependencies": {
     "electron": "^1.6.7",
+    "electron-notifications": "^1.0.0",
     "jquery": "^3.2.1",
     "keymaster": "^1.6.2",
     "lodash": "^4.17.4",

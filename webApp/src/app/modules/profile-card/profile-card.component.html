@@ -1,0 +1,73 @@
+<div class="DashboardProfileCard  module">
+
+    <a class="DashboardProfileCard-bg u-bgUserColor u-block" href="#" tabindex="-1" aria-hidden="true" rel="noopener">
+        <img src="./../../../assets/images/unsplash/cover.jpg" />
+    </a>
+
+    <div class="DashboardProfileCard-content">
+
+        <a class="DashboardProfileCard-avatarLink u-inlineBlock" href="#" title="{{user.name}}" tabindex="-1" aria-hidden="true"
+            rel="noopener">
+            <img class="DashboardProfileCard-avatarImage js-action-profile-avatar" src="./../../../assets/images/avatar.jpg" alt="">
+          </a>
+
+        <div class="DashboardProfileCard-userFields account-group">
+            <div class="DashboardProfileCard-name u-textTruncate">
+                <a class="u-textInheritColor js-nav" data-toggle="dropdown" href="#" rel="noopener">
+                    <b class="u-linkComplex-target">{{user.name}}</b>
+                    <span class="caret"></span>
+                </a>
+                <ul class="profile-menu dropdown-menu">
+                    <li>
+                        <a href="#" class="status" data-toggle="dropdown" >Set a Status</a>
+                        <span class="caret-right"></span>
+                        <ul class="status-menu dropdown-menu">
+                            <li><a href="#">Available</a></li>
+                            <li><a href="#">Busy</a></li>
+                            <li><a href="#">Offline</a></li>
+                            <li><a href="#">Meeting</a></li>
+                            <li><a href="#">Work from home</a></li>
+                            <li><a href="#">Sick</a></li>
+                            <li><a href="#">On vacation</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="profile-menu-a" href="/profile">Profile</a></li>
+                    <li *ngIf="newChannel"><a class="profile-menu-a" (click)="createNewChannel()">New Channel</a></li>
+                </ul>
+                <span class="UserBadges"></span>
+
+            </div>
+            <span class="DashboardProfileCard-screenname u-inlineBlock u-dir" dir="ltr">
+                <a class="DashboardProfileCard-screennameLink u-linkComplex u-linkClean js-nav" href="#" rel="noopener">
+                    <span class="username u-dir" dir="ltr">Tech Lead</span>
+            </a>
+            </span>
+        </div>
+
+        <div class="ProfileCardStats">
+            <ul class="ProfileCardStats-statList Arrange Arrange--bottom Arrange--equal">
+                <li class="ProfileCardStats-stat Arrange-sizeFit">
+                    <a class="ProfileCardStats-statLink u-textUserColor u-linkClean u-block js-nav js-tooltip" href="#">
+                        <span class="ProfileCardStats-statLabel u-block">Projects</span>
+                        <span class="ProfileCardStats-statValue">8</span>
+                    </a>
+                </li>
+                <li class="ProfileCardStats-stat Arrange-sizeFit">
+                    <a class="ProfileCardStats-statLink u-textUserColor u-linkClean u-block js-nav js-tooltip" href="#/">
+                        <span class="ProfileCardStats-statLabel u-block">Repositories</span>
+                        <span class="ProfileCardStats-statValue">12</span>
+                    </a>
+                </li>
+                <li class="ProfileCardStats-stat Arrange-sizeFit">
+                    <a class="ProfileCardStats-statLink u-textUserColor u-linkClean u-block js-nav js-tooltip" title="Blogs" href="#">
+                        <span class="ProfileCardStats-statLabel u-block">Blogs</span>
+                        <span class="ProfileCardStats-statValue">32</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+
+        <div id="dashboard-profile-prompt"></div>
+
+    </div>
+</div>

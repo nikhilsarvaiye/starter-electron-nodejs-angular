@@ -1,0 +1,1 @@
+export * from './canteen-bot.message.component';

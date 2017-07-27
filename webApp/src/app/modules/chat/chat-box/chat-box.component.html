@@ -1,0 +1,67 @@
+<div [hidden]="render" class="chat-panel conversation-open">
+  <div class="chat-inner">
+    <div class="chat-conversation">
+      <div class="chat-header">
+        <div class="user-title">
+          <div class="details">
+            <a href="#" class="ripple" data-toggle="dropdown">
+              <img src="./../../../../assets/images/avatar.jpg" class="header-avatar img-circle" alt="user" title="user">
+              <div class="name">
+                <span *ngIf='!room.isChannel' >{{chatWindow.title}}</span>
+                
+                <span *ngIf='room.isChannel && !chatWindow.titleEditing' >{{chatWindow.title}}</span>
+                <div *ngIf='room.isChannel && chatWindow.titleEditing' class="col-sm-2">
+                  <input type="text" class="form-control title-edit" value="{{chatWindow.title}}" />
+                </div>
+                <span *ngIf="!room.isChannel && chatWindow.title && !chatWindow.titleEditing" class="status status-online"></span>
+                <span *ngIf='room.isChannel && !chatWindow.titleEditing && room.createdBy == user.user_id' class="edit" (click)="chatWindow.titleEditing = true">edit</span>
+                <span *ngIf='room.isChannel && chatWindow.titleEditing' class="edit update">update</span>
+                <span *ngIf='room.isChannel && chatWindow.titleEditing' class="edit cancel" (click)="chatWindow.titleEditing = false">cancel</span>
+              </div>
+              <div *ngIf='!room.isChannel' class="about">{{chatWindow.about}}</div>
+              <div *ngIf='room.isChannel && !chatWindow.titleEditing' class="member-link">
+                <a href="#" class="status" data-toggle="dropdown" >members</a>
+                <span class="caret"></span>
+                <ul class="status-menu dropdown-menu">
+                  <li *ngFor="let member of chatWindow.members"><a href="#">{{member.name}}</a></li>
+                </ul>
+              </div>
+          </a>
+        </div>
+        <div class="actions">
+          <button class="btn btn-success audio" title="Audio call">
+              <i class="fa fa-phone"></i>
+            </button>
+          <button class="btn btn-success video" title="Video call">
+                <i class="fa fa-video-camera"></i>
+            </button>
+        </div>
+      </div>
+    </div>
+    <div class="chat-conversation-content scrollable">
+      <div *ngFor="let chatConversation of chatConversations">
+        <p *ngIf="chatConversation.messages && chatConversation.messages.length" class="text-center text-muted small text-uppercase bold pb15">
+          {{chatConversation.day}}
+        </p>
+        <div *ngFor="let message of chatConversation.messages | orderBy:'created':false" class="chat-conversation-user" [ngClass]="{'me': user.user_id === message.from, 'them': user.user_id !== message.from}">
+          <div class="chat-conversation-message">
+            <text-message *ngIf="message.type == 'Text' || !message.type" [message]="message"></text-message>
+            <canteen-bot-message *ngIf="message.type == 'CanteenBot'" [message]="message" (send)="sendBotMessage($event)"></canteen-bot-message>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="chat-conversation-footer">
+      <pre>{{message}}</pre>
+      <!-- <input #inputsend type="hidden" value="amo" class="facemocion"/> -->
+      <!-- [emoji] -->
+      <textarea class="chat-input-textarea" [(ngModel)]="message" (keypress)="eventHandler($event)"></textarea>
+
+      <button (click)="send()" class="chat-send"><i class="fa fa-paper-plane"></i></button>
+      <button class="chat-input-tool"><i class="fa fa-camera"></i></button>
+
+    </div>
+  </div>
+</div>
+</div>

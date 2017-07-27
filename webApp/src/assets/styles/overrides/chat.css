@@ -1,0 +1,36 @@
+/* chat */
+.chat-panel {
+    position: relative;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    margin-left: -220px;
+    margin-top: 10px;
+    width: 220px;
+    border: none;
+}
+.chat-panel .chat-users, .chat-panel .chat-conversation {
+    position: relative;
+}
+.chat-panel .chat-group {
+    margin-bottom: 0; 
+}
+.chat-panel .chat-group .chat-group-header, .chat-panel .chat-group a {
+    padding: 10px 20px;
+}
+.chat-conversation {
+    display: inherit;
+}
+.chat-panel .chat-conversation .chat-conversation-footer,
+.chat-panel .chat-conversation .chat-input {
+    position: relative;
+}
+.chat-group a:hover {
+    background: #f0f0f0;
+}
+.chat-group-header {
+    font-size: 12px;
+    font-weight: bold;
+}
+

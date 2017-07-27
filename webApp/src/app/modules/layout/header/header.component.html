@@ -1,0 +1,124 @@
+<!-- top header -->
+<div class="brand visible-xs">
+        <!-- toggle offscreen menu -->
+        <div class="toggle-offscreen">
+            <a href="#" class="hamburger-icon visible-xs" data-toggle="offscreen" data-move="ltr">
+              <span></span>
+              <span></span>
+              <span></span>
+            </a>
+        </div>
+        <!-- /toggle offscreen menu -->
+        <!-- logo -->
+        <a class="brand-logo">
+            <span>nConnect</span>
+          </a>
+        <!-- /logo -->
+    </div>
+
+    <ul class="nav navbar-nav hidden-xs">
+        <li class="searchbox">
+            <a href="#" data-toggle="search">
+              <i class="search-close-icon icon-close hide"></i>
+              <i class="search-open-icon icon-magnifier"></i>
+            </a>
+        </li>
+        <li class="navbar-form search-form hide">
+            <input type="search" class="form-control search-input" placeholder="Start typing...">
+            <div class="search-predict hide">
+                <a href="#">Searching for 'purple rain'</a>
+                <div class="heading">
+                    <span class="title">People</span>
+                </div>
+                <ul class="predictive-list">
+                    <li>
+                        <a class="avatar" href="#">
+                    <img src="./../../../../assets/images/face1.jpg" class="img-circle" alt="">
+                    <span>Tammy Carpenter</span>
+                  </a>
+                    </li>
+                </ul>
+                <div class="heading">
+                    <span class="title">Page posts</span>
+                </div>
+                <ul class="predictive-list">
+                    <li>
+                        <a class="avatar" href="#">
+                            <!--<img src="./../../../../assets/images/unsplash/img2.jpeg" class="img-rounded" alt="">-->
+                            <span>The latest news for cloud-based developers </span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </li>
+    </ul>
+    
+    <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li>
+            <a href="#" class="ripple" data-toggle="dropdown">
+              <span>Home</span>
+            </a>
+        </li>
+        <!-- <li>
+            <a href="#" class="ripple" data-toggle="dropdown">
+              <span>EN</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">English</a>
+                </li>
+            </ul>
+        </li> -->
+        <li>
+            <a href="#" class="ripple" data-toggle="dropdown">
+              <i class="icon-bell"></i>
+            </a>
+            <ul class="dropdown-menu notifications">
+                <li class="notifications-header">
+                    <p class="text-muted small">You have 3 new messages</p>
+                </li>
+                <li>
+                    <ul class="notifications-list">
+                        <li>
+                            <a href="#">
+                                <div class="notification-icon">
+                                    <div class="circle-icon bg-success text-white">
+                                        <i class="icon-bulb"></i>
+                                    </div>
+                                </div>
+                                <span class="notification-message"><b>Sean</b> launched a new application</span>
+                                <span class="time">2s</span>
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </li>
+        <li>
+            <a href="#" class="ripple" data-toggle="dropdown">
+              <img src="./../../../../assets/images/avatar.jpg" class="header-avatar img-circle" alt="user" title="user">
+              <span>{{user.name}}</span>
+              <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu">
+                <li>
+                    <a href="#">Settings</a>
+                </li>
+                <li>
+                    <a href="#">
+                  <span class="label bg-danger pull-right">34</span>
+                  <span>Notifications</span>
+                </a>
+                </li>
+                <li role="separator" class="divider"></li>
+                <li>
+                    <a href="#">Help</a>
+                </li>
+                <li>
+                    <a href="#" (click)="logout()">Logout</a>
+                </li>
+            </ul>
+        </li>
+    </ul>
+<!-- /top header -->

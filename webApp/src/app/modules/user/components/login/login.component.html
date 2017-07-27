@@ -1,0 +1,45 @@
+<!-- Advanced login -->
+<!--<modal></modal>-->
+
+<!-- /page loading spinner -->
+
+<div class="app signin usersession">
+  <div class="session-wrapper">
+    <div class="page-height-o row-equal align-middle">
+      <div class="column">
+        <div class="card bg-white no-border">
+          <div class="card-block">
+            <div class="text-center m-b">
+              <h4 class="text-uppercase">Welcome back</h4>
+              <p>Please sign in to your account</p>
+            </div>
+
+            <!--<button class="btn btn-primary btn-block btn-lg m-b" type="submit" (click)="azureLogin()">Login Azure</button>
+            -->
+            <form (ngSubmit)="login()" #loginForm="ngForm" class="form-layout">
+              <a (click)="azureLogin()" class="btn btn-block btn-icon btn-microsoft">
+                <i class="fa fa-windows"></i> Sign in with Microsoft
+              </a>
+              <div class="divider">
+                <span>OR</span>
+              </div>
+              <div class="form-inputs">
+                <label class="text-uppercase">Your user name</label>
+                <input type="email" class="form-control input-lg" [(ngModel)]="user.user_id" name="username" placeholder="Username" required>
+                <label class="text-uppercase">Password</label>
+                <input type="password" class="form-control input-lg" [(ngModel)]="user.password" name="password" placeholder="Password" required>
+              </div>
+              <button class="btn btn-primary btn-block btn-lg m-b" type="submit">Login</button>
+              <a class="btn btn-block no-bg btn-lg m-b" href="/register">Signup</a>
+              <p class="text-center">
+                <small>
+                  <em>By clicking Log in you agree to our <a href="#">terms and conditions</a></em>
+                  </small>
+              </p>
+            </form>
+          </div>
+          <a ui-sref="user.forgot" class="bottom-link">Forgotten password?</a>
+        </div>
+      </div>
+    </div>
+  </div>

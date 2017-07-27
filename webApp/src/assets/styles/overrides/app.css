@@ -1,0 +1,53 @@
+body {
+    overflow: hidden;
+}
+@media screen and (min-width: 768px) {
+    .main-panel {
+        min-height: inherit;    
+        margin-top: 16px;
+    }
+}
+/* scroll */
+.ps-container > .ps-scrollbar-y-rail > .ps-scrollbar-y {
+    width: 10px;
+}
+.layout-fixed-header .main-content {
+    padding: 0;
+}
+.main-panel > .header .nav > li > a,
+.main-panel > .header .nav > li > a:hover,
+.main-panel > .header .nav > li > a:focus,
+.main-panel > .header .nav > li > a::selection,
+.main-panel > .header .nav > li > a:visited,
+.main-panel > .header .nav .open > a,
+.main-panel > .header .nav .open > a:focus,
+.main-panel > .header .nav .open > a:hover,
+.main-panel > .header .nav .open > a::selection,
+.main-panel > .header .nav .open > a:visited
+/* a:hover, a:focus  */
+{
+    color: #59595A;
+}
+
+ul.dropdown-menu {
+    border-radius: 8px !important;
+    margin-top: 5px !important;
+    margin-right: 5px !important;
+}
+.open > .dropdown-menu {
+    z-index: 9999 !important;
+}
+
+/*
+black
+#444
+
+blue
+#2672ec
+
+blur hover
+#125acd
+
+red
+#a94442
+*/

@@ -1,0 +1,96 @@
+<!--<span>
+  <select [(ngModel)]="room">
+    <option value="">Select room...</option>
+    <option *ngFor="let room of roomService.rooms | async" [value]="room.name">{{room.name}}</option>
+  </select>
+  <button (click)="join()">Join</button>
+  <button (click)="remove()">Remove</button>
+</span>
+<span>
+  New room:
+  <input [(ngModel)]="newRoom" (keypress)="eventHandler($event)">
+  <button (click)="create()">Create</button>
+</span>-->
+
+<!--<div class="chat-panel trends">
+  <div class="chat-inner">
+    <div class="chat-users">
+      <div class="chat-group">
+        <div class="chat-group-header">
+          Channels
+        </div>
+        <a *ngFor="let room of roomService.rooms | async">
+            <span style="cursor:pointer" (click)="onUserChatClickHandler(room)">#{{ room.name }}</span>
+          </a>
+      </div>
+    </div>
+  </div>
+</div>-->
+
+<div class="messages card">
+  <div class="card-block p-a-0">
+    <div class="box-tab m-b-0">
+      <ul class="nav nav-tabs">
+        <li><a href="#colleagues" data-toggle="tab">Colleagues</a></li>
+        <li class="active"><a href="#recent" data-toggle="tab">Recent</a></li>
+      </ul>
+      <div class="tab-content">
+        <div class="tab-pane" id="colleagues">
+          <div class="chat-scroll scrollable">
+            <div class="chat-panel list">
+              <div class="chat-inner">
+                <div class="chat-users">
+                  <div class="chat-group">
+                    <div class="chat-group-header search-header">
+                      <div class="search-users">
+                        <input type="text" [(ngModel)]="searchText" class="form-control" placeholder="Search">
+                        <span (click)="searchUsers()" class="search-open-icon icon-magnifier" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chat-group">
+                    <a *ngFor="let user of users | filter:{name: searchText}" (click)="onContactClick(user)" class="ripple chat-room">
+                      <img alt="user" class="header-avatar img-circle" src="{{user.pic}}" title="user" />
+                      <span [ngClass]="{'status-online': user.isOnline, 'status-offline': !user.isOnline}" class=""></span>
+                      <div class="name">{{ user.name }}</div> 
+                    </a>
+                    <a class="ripple chat-room" *ngIf="!users || !users.length">
+                      <div (click)="searchUsers()" class="name">No user found, click to search</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="tab-pane active in" id="recent">
+          <div class="chat-scroll scrollable">
+            <div class="chat-panel list">
+              <div class="chat-inner">
+                <div class="chat-users">
+                  <div class="chat-group">
+                    <div class="chat-group-header search-header">
+                      <div class="search-users">
+                        <input type="text" [(ngModel)]="filterText" class="form-control" placeholder="Search">
+                        <span (click)="searchUsers()" class="search-open-icon icon-magnifier" aria-hidden="true"></span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="chat-group">
+                    <a *ngFor="let chat of chats | filter:{chatName: filterText}" (click)="onChatClick(chat)" class="ripple chat-room">
+                      <img alt="user" class="header-avatar img-circle" src="{{chat.pic}}" title="user">
+                      <span [ngClass]="{'status-online': chat.isOnline, 'status-offline': !chat.isOnline}" class=""></span>
+                      <div class="name">{{ chat.chatName }}</div>
+                    </a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- chat -->
+          <!-- /chat -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

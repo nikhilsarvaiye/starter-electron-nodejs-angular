@@ -1,0 +1,1 @@
+export { Backend } from './config/express.config';

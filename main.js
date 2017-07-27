@@ -7,11 +7,24 @@ let mainWindow;
 function createWindow() {
   mainWindow = new BrowserWindow({
     autoHideMenuBar: true,
-    width: 640,
-    height: 480
+    width: 1040,
+    height: 700,
+    minWidth: 640,
+    minHeight: 480,
+    // fullscreen: true,
+    // icon?: NativeImage | string,
+    // backgroundColor: "#444",
+    // titleBarStyle?: ('default' | 'hidden' | 'hidden-inset');
+    // titleBarStyle: 'hidden-inset',
+    title: 'nConnect - Power of C3'
   });
-  mainWindow.loadURL(`file://${__dirname}/index.html`);
-  //mainWindow.webContents.openDevTools();
+  
+  // mainWindow.loadURL(`file://${__dirname}/index.html`);
+  // mainWindow.loadURL(__dirname + '/webApp/dist/index.html');
+  mainWindow.loadURL('http://127.0.0.1:4000');
+
+  mainWindow.webContents.openDevTools();
+  
   mainWindow.on("closed", function() {
     mainWindow = null;
   });

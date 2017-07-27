@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <base href="/">
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <title>nConnect</title>
+    <link href="//fonts.googleapis.com/css?family=Arimo:400,400italic,700,700italic" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+
+    <!-- <div class="card-block">
+        <div class="sk-rotating-plane center-block m-y-lg"></div>
+    </div> -->
+
+    <app></app>
+
+    <!-- <script src="assets/scripts/jquery.js"></script>
+    <script src="assets/scripts/bootstrap.js"></script> -->
+
+    <script>
+        // var fs = require(fs);
+        try {
+            if (require) {
+                var electron = require('electron') // http://electron.atom.io/docs/api
+                var path = require('path')         // https://nodejs.org/api/path.html
+                var url = require('url')
+                var os = require('os') // https://nodejs.org/api/os.html
+                var cpus = os.cpus();
+                window.cpus = os.cpus();
+                // alert(JSON.stringify(cpus));
+                // alert(JSON.stringify(process.versions));;
+
+                // const notifier = require('electron-notifications')
+
+                // // Just title
+                // notifier.notify('Calendar')
+
+                // // Full Options
+                // notifier.notify('Calendar', {
+                //     message: 'Event begins in 10 minutes',
+                //     icon: 'http://cl.ly/J49B/3951818241085781941.png',
+                //     buttons: ['Dismiss', 'Snooze'],
+                // });
+            }
+        }
+        catch (e) {
+
+        }
+    </script>
+
+</body>
+
+</html>

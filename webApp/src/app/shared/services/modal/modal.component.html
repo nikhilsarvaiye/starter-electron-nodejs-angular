@@ -1,0 +1,26 @@
+
+<div class="modal fade" bsModal #modalDialog="bs-modal" [config]="modal.options"
+     tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      <div class="modal-header {{ modal.options.headerClasses }}">
+        <h5 class="modal-title pull-left">{{modal.title}}</h5>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <h5 *ngIf="modal.body.heading" class="text-semibold">{{ modal.body.heading }}</h5>
+				<p *ngIf="modal.body.text">{{ modal.body.text }}</p>
+        <div *ngIf="modal.body.errors" class="validation-summary-errors">
+          <ul>
+            <li *ngFor="let error of modal.body.errors; let i = index">{{ error.message }}</li>
+          </ul>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button *ngFor="let button of modal.buttons; let i = index" type="button" class="btn {{button.classes}}" (click)="button.onClick()">{{button.text}}</button>
+      </div>
+    </div>
+  </div>
+</div>
