@@ -6,9 +6,25 @@
         </div>
     </div>
     <div class="row canteen-summary margin-bottom-10">
-        <div class="col-md-12" *ngFor="let menuItem of menuItems">
-            <h4 class="title">{{menuItem.title}}</h4>
-            <p class="price">{{menuItem.price}}</p>
-        </div>
+     <!--   <div class="col-md-12" *ngFor="let menuItem of menuItems">-->
+
+      <div ng-repeat="menuItem of menuItems">
+
+            <div class="row">
+                <div class="col col-50"><input type="checkbox" name="chkboxItem" value="chkbox"></div>
+              <div class="title">  {{menuItem[$index]}}</div>
+                <div class="price">{{menuItem[$index + 1]}}</div>
+            </div>
+     </div>
+<!--<table>
+                <tr>
+
+            <td><input type="checkbox" name="chkboxItem" value="chkbox"></td>
+            <td><h4 class="title">{{menuItem.title}}</h4></td>
+            <td><p class="price">{{menuItem.price}}</p></td>
+                    </tr>
+
+            </table>-->
+       <!-- </div>-->
     </div>
 </div>

@@ -26,7 +26,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Poha",
                 "price" : 20,
                 "type" : "breakfast"
-            }
+            },
 
             /* 2 */
             {
@@ -34,7 +34,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Upma",
                 "price" : 10,
                 "type" : "breakfast"
-            }
+            },
 
             /* 3 */
             {
@@ -42,7 +42,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Missal Pav",
                 "price" : 30,
                 "type" : "breakfast"
-            }
+            },
 
             /* 4 */
             {
@@ -50,7 +50,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Vada Pav",
                 "price" : 15,
                 "type" : "breakfast"
-            }
+            },
 
             /* 5 */
             {
@@ -58,7 +58,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Banana Shake",
                 "price" : 30,
                 "type" : "Snacks"
-            }
+            },
 
             /* 6 */
             {
@@ -66,7 +66,7 @@ export class CanteenComponent implements OnInit {
                 "title" : "Thali",
                 "price" : 50,
                 "type" : "Lunch"
-            }
+            },
 
             /* 7 */
             {
