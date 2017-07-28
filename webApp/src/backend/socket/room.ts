@@ -81,8 +81,8 @@ export class RoomSocket {
     // console.log(this.rooms);
     let validRooms = {};
     for (const room of this.rooms) {
-      validRooms[room._id] = true;
-      const matches = this.messageSockets.filter(messageSocket => messageSocket.room._id === room._id);
+      validRooms[room.name] = true;
+      const matches = this.messageSockets.filter(messageSocket => messageSocket.room.name === room.name);
       if (matches.length == 0) {
         console.log('creating new namespace for', room.name);
         this.messageSockets.push(new MessageSocket(this.io, room));
@@ -92,7 +92,7 @@ export class RoomSocket {
     // Destroy sockets for removed rooms
     for (const index in this.messageSockets) {
       const messageSocket = this.messageSockets[index];
-      if (!validRooms[messageSocket.room._id]) {
+      if (!validRooms[messageSocket.room.name]) {
         this.messageSockets.splice(parseInt(index, 10), 1);
       }
     }
