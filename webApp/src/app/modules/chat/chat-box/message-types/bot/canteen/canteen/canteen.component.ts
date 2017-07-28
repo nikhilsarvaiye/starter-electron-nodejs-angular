@@ -1,4 +1,5 @@
 import { Component, ViewEncapsulation, Input, Output, EventEmitter, OnInit } from '@angular/core';
+import * as _ from 'lodash';
 
 @Component({
     encapsulation: ViewEncapsulation.Emulated,
@@ -84,5 +85,7 @@ export class CanteenComponent implements OnInit {
             this.send.emit(message);
         }
     }
+
+   
 }
 
