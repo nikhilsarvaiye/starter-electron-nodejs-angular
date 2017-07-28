@@ -1,0 +1,12 @@
+<div>
+<table>
+  <tr>
+   <select [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)" >     
+        <option *ngFor="let x of departments" [value]="x.id">{{x.name}}</option>
+    </select> 
+</tr>
+<tr>
+   <chart [options]="employeeAllocationChart" style="width:80%; height:80%;" ></chart>
+</tr>
+</table>
+</div>
