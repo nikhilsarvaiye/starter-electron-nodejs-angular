@@ -6,8 +6,11 @@
         </div>
     </div>
     <div class="row canteen-summary margin-bottom-10">
-     <!--   <div class="col-md-12" *ngFor="let menuItem of menuItems">-->
-
+       <div class="col-md-12" *ngFor="let menuItem of menuItems">
+<h4 class="title">{{menuItem.title}}</h4>
+<p class="price">{{menuItem.price}}</p>
+    </div>
+<!--
       <div ng-repeat="menuItem of menuItems">
 
             <div class="row">
@@ -16,6 +19,7 @@
                 <div class="price">{{menuItem[$index + 1]}}</div>
             </div>
      </div>
+     -->
 <!--<table>
                 <tr>
 
