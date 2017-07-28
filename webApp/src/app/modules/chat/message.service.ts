@@ -1,18 +1,23 @@
 import { ReplaySubject } from 'rxjs';
 import * as moment from 'moment';
-
+import { NotificationService } from './../../core';
 import { SocketService } from '../../shared/services/socket.service';
 import { MomentDays } from '../../shared/helpers/moment.days';
 import { UserService } from '../user/user.service';
 import { IMessage } from '../../../models';
 import { ChatConversation } from './chat-box/chat-box.models';
+import { IUserModel } from './../../modules/user/user.model';
 
 export class MessageService {
   messages: ReplaySubject<any> = new ReplaySubject(1);
   private list: IMessage[] = [];
   private socketService: SocketService;
+  private user: IUserModel;
 
-  constructor(private userService: UserService, private room: string) {
+  constructor(private userService: UserService, private room: string, private readonly _notificationService: NotificationService) {
+
+    this.user = this.userService.getUserDetails();
+
     // Connect to room nsp
     this.socketService = new SocketService('messages/' + encodeURIComponent(this.room));
 
@@ -57,6 +62,8 @@ export class MessageService {
         const alreadyPresent = this.list.find(x => (<any>x)._id == message._id);
         if (!alreadyPresent) {
           this.list.push(message);
+          debugger
+          this.sendNewMessageNotification(message);
         }
         this.messages.next(this.list);
       },
@@ -108,6 +115,12 @@ export class MessageService {
 
   leave(): void {
     this.socketService.socket.disconnect();
+  }
+
+  sendNewMessageNotification(message: IMessage) {
+    if (message.from != this.user.user_id && !message.read) {
+      this._notificationService.notify(message.message, message.from);
+    }
   }
 
 }

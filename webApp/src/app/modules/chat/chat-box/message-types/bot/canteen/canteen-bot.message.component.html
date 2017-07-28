@@ -3,7 +3,6 @@
     <policy *ngIf="botType == 'Policy'" [data]="data"></policy>
     <canteen *ngIf="botType == 'Canteen'" [data]="data"></canteen>
     <div *ngIf="!botType">
-        <p>This is bot reply</p>
         <p>{{message.message}}</p>
     </div>
 </div>

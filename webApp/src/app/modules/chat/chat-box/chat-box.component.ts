@@ -58,7 +58,7 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
         this.setChatChannel();
       }
 
-      this.messageService = new MessageService(this.userService, this.room.name);
+      this.messageService = new MessageService(this.userService, this.room.name, this._notificationService);
       this.messageService.messages.subscribe(messages => {
         this.messages = messages;
         this.chatConversations = this.messageService.group(messages)

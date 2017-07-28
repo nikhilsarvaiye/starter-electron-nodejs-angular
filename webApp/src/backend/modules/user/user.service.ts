@@ -29,7 +29,7 @@ export class UserService extends BaseService<IUserModel> {
             let errorMessages = UserConstants.Messages.Error;
             let selectFields = `
                 ${fields._id} ${fields.userId} ${fields.password} ${fields.salt} 
-                ${fields.firstname} ${fields.lastname}
+                ${fields.firstname} ${fields.lastname} ${fields.fullName}
                 `;
             // validate Form
             let handleErrorResponse = UserValidation.validateLoginForm(userId, password);
@@ -169,7 +169,7 @@ export class UserService extends BaseService<IUserModel> {
      * @param  {(error:any,result:any)=>void} callback
      */
     paginate(pageSize: number, pageNumber: number, callback: (error: any, result: any) => void) {
-        const selectFields = `${UserConstants.Schemas.Users.Fields.userId} ${UserConstants.Schemas.Users.Fields.firstname} ${UserConstants.Schemas.Users.Fields.lastname}`;
+        const selectFields = `${UserConstants.Schemas.Users.Fields.userId} ${UserConstants.Schemas.Users.Fields.fullName} ${UserConstants.Schemas.Users.Fields.firstname} ${UserConstants.Schemas.Users.Fields.lastname}`;
         const sortBy = UserConstants.Schemas.Users.Fields.firstname;
         this.repository.paginate({}, selectFields, pageSize, pageNumber, sortBy, callback);
     }

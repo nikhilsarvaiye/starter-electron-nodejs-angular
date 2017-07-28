@@ -18,6 +18,7 @@ export class MessageReplyHelper {
     static getMessageReply(message: IMessage, callback: (message: IMessage) => void): void {
         console.log("creating message reply for message type ", message.type);
         if (message.type == MessageTypes.CanteenBot) {
+            message.from = MessageTypes.CanteenBot;
             return new CanteenBotMessageReply().createMessageReply(message, callback);
         }
         // return default where nothing needs to be done

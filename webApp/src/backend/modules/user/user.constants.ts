@@ -24,6 +24,7 @@ export class UserConstants {
                 public static userId = "user_id";
                 public static password = "password";
                 public static salt = "salt";
+                public static fullName = "name";
                 public static firstname = "firstname";
                 public static lastname = "lastname";
                 public static email = "email";

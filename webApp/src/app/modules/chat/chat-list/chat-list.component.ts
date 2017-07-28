@@ -66,7 +66,7 @@ export class ChatListComponent {
   }
 
   setChats(users: IUserModel[], rooms: IRoom[], selectRoom?: IRoom): void {
-
+    debugger
     // remove current user from the users
     users = users.filter(x => x.user_id != this.userService.userDetails.user_id);
 
@@ -88,9 +88,10 @@ export class ChatListComponent {
         chat.pic = this.getChannelPic(x);
       } else {
         if (x.users && x.users.length == 2) {
-          const roomUser = users.find(u => x.users[1] == u.user_id);
+          const chatOtherUserId = x.users.find(x => x != this.userService.userDetails.user_id);
+          const roomUser = users.find(u => u.user_id == chatOtherUserId);
           if (roomUser) {
-            chat.chatName = (<any>roomUser).name;
+            chat.chatName = roomUser.name;
             // todo: set pic
             chat.pic = this.getContactPic(roomUser);
           }
