@@ -27,7 +27,7 @@ export class CanteenBotMessageReply implements IMessageReply {
                 switch (result.result.action) {
                     case 'viewMenu':
                     case 'viewAllMenus':
-                        new CanteenService().search('a', (error: any, data: any) => {
+                        new CanteenService().search('canteen', (error: any, data: any) => {
                             this.sendResponse('Canteen', message, result, callback, data);
                         });
                         break;
