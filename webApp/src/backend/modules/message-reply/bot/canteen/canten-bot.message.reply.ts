@@ -48,8 +48,8 @@ export class CanteenBotMessageReply implements IMessageReply {
                         break;
 
                     default:
-                        //this.sendResponse('', message, result, callback);
-                        this.sendResponse('', message, result.result.fulfillment.speech, callback);
+                        this.sendResponse('', message, result, callback);
+                        //this.sendResponse('', message, result.result.fulfillment.speech, callback);
                         break;
                 }
             }
