@@ -11,7 +11,7 @@
   <profile-card></profile-card>
 
   <!--<main-nav></main-nav>-->
-  
+
 </div>
 <!-- /sidebar panel -->
 
@@ -21,38 +21,38 @@
     <header></header>
   </div>
   <div class="main-content">
-<table>
-  <tr>
-     <td >
-       <tr>
-    <select [(ngModel)]="selectedfilterValue" (ngModelChange)="onOptionChange($event)" >     
-        <option *ngFor="let x of chartFilterOptions" [value]="x.id">{{x.name}}</option>
-    </select> 
-       </tr>
-       <tr>
-      <chart [options]="availabilityChart"></chart>
-         </tr>
-      </td>
-      <td>
-<tr>
-   <select [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)" >     
-        <option *ngFor="let x of departments" [value]="x.id">{{x.name}}</option>
-    </select> 
-</tr>
-<tr>
-   <chart [options]="employeeAllocationChart" ></chart>
-</tr>
-</td>
-  </tr>
-  <tr>
+    <table>
       <tr>
         <td>
-        <chart [options]="productivityChart" ></chart>
+          <tr>
+            <select [(ngModel)]="selectedfilterValue" (ngModelChange)="onOptionChange($event)">     
+        <option *ngFor="let x of chartFilterOptions" [value]="x.id">{{x.name}}</option>
+    </select>
+          </tr>
+          <tr>
+            <chart [options]="availabilityChart"></chart>
+          </tr>
         </td>
-         <td>
-        <chart [options]="sentimentStats" ></chart>
+        <td>
+          <tr>
+            <select [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)">     
+        <option *ngFor="let x of departments" [value]="x.id">{{x.name}}</option>
+    </select>
+          </tr>
+          <tr>
+            <chart [options]="employeeAllocationChart"></chart>
+          </tr>
         </td>
-    </tr>
-</table>
+      </tr>
+      <tr>
+        <tr>
+          <td>
+            <chart [options]="productivityChart"></chart>
+          </td>
+          <td>
+            <chart [options]="sentimentStats"></chart>
+          </td>
+        </tr>
+    </table>
   </div>
 </div>

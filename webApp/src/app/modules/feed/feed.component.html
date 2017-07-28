@@ -1,0 +1,159 @@
+<div class="header">
+  nConnect
+</div>
+<!-- sidebar panel -->
+<div class="sidebar-panel offscreen-left">
+
+  <brand-header></brand-header>
+
+  <quick-launch-apps></quick-launch-apps>
+
+  <profile-card></profile-card>
+
+  <!--<main-nav></main-nav>-->
+  <chat-list #chatListComponent (select)="onChatRoomSelect($event)"></chat-list>
+
+</div>
+<!-- /sidebar panel -->
+
+<div class="main-panel">
+
+  <div class="header navbar">
+    <header></header>
+  </div>
+  <div class="main-content">
+
+    <!-- <div *ngFor="let chat of chats" class="ripple chat-room">
+      <div [hidden]="!chat.showChatBox">
+        <chat-box [render]="chat.showChatBox" [room]="chat"></chat-box>
+      </div>
+    </div> -->
+
+    <div class="">
+      <div class="row">
+        <div class="col-sm-3 pull-right">
+          <div class="profile-sidebar">
+            <div class="card bg-white no-border">
+              <div class="card-block">
+                <div class="profile-reccomendations">
+                  <small class="bold text-uppercase">Recommendations</small>
+                  <ul class="user-meta">
+                    <li>
+                      <a href="javascript:;">All stream</a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">Connected Apps</a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">Photos</a>
+                    </li>
+                    <li>
+                      <a href="javascript:;">Most recent</a>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-9">
+          <div class="card bg-primary no-border composer">
+            <div class="card-block">
+              <textarea placeholder="What's on your mind" rows="3" class="form-control shadow no-border"></textarea>
+              <div class="composer-options">
+                <button class="btn" type="button">
+                      <i class="icon-pointer"></i>
+                    </button>
+                <button class="btn" type="button">
+                      <i class="icon-picture"></i>
+                    </button>
+                <button class="btn" type="button">
+                      <i class="icon-film"></i>
+                    </button>
+                <button class="btn" type="button">
+                      <i class="icon-clock"></i>
+                    </button>
+              </div>
+            </div>
+          </div>
+          <div class="card bg-white no-border">
+            <div class="card-block">
+              <div class="profile-timeline-header">
+                <a href="#" class="profile-timeline-user">
+                      <img src="./../../../assets/images/avatar.jpg" alt="" class="img-rounded">
+                    </a>
+                <div class="profile-timeline-user-details">
+                  <a href="#" class="bold">Sean Carpenter</a>
+                  <br>
+                  <em class="text-info small">created an album collection</em>
+                </div>
+              </div>
+              <div class="profile-timeline-content">
+                <p>Morbi leo risus, porta ac consectetur ac, vestibulum at eros. Morbi leo risus, porta ac consectetur ac, vestibulum
+                  at eros. Sed posuere consectetur est at lobortis. Cras justo odio, dapibus ac facilisis in, egestas eget
+                  quam.</p>
+                <div class="profile-timeline-./../../../assets/images/ clearfix">
+                  <a href="javascript:;" class="image-link">
+                        <img src="" alt="" class="img-responsive"><!--http:/lorempixel.com/400/300?6-->
+                      </a>
+                  <a href="javascript:;" class="image-link-smaller">
+                        <img src="" alt="" class="img-responsive">
+                      </a>
+                  <a href="javascript:;" class="image-link-smaller">
+                        <img src="" alt="" class="img-responsive">
+                      </a>
+                  <a href="javascript:;" class="image-link">
+                        <img src="" alt="" class="img-responsive">
+                      </a>
+                </div>
+                <div class="profile-timeline-controls">
+                  <a class="pull-right" href="javascript:;">
+                        <i class="icon-share"></i>
+                      </a>
+                  <a class="m-r" href="javascript:;">
+                        <i class="icon-heart"></i>&nbsp;Like
+                      </a>
+                  <a href="javascript:;">
+                        <i class="icon-bubble"></i>&nbsp;Comment
+                      </a>
+                </div>
+                <div class="post-comments">
+                  <div class="media">
+                    <a class="pull-left" href="javascript:;">
+                          <img class="media-object avatar img-rounded" src="./../../../assets/images/face3.jpg" alt="">
+                        </a>
+                    <div class="comment">
+                      <div class="comment-author">
+                        <a href="javascript:;">
+                              Jane Doe
+                            <time datetime="2015-09-01" class="time">September 1st, 2015</time>
+                            </a>
+                      </div>
+                      <p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis.</p>
+                      <hr>
+                    </div>
+                    <div class="media">
+                      <a class="pull-left" href="javascript:;">
+                            <img class="media-object avatar img-rounded" src="./../../../assets/images/avatar.jpg" alt="">
+                          </a>
+                      <div class="comment">
+                        <div class="comment-author">
+                          <a href="javascript:;">
+                              Jane Doe
+                            <time datetime="2015-09-02" class="time">September 2nd, 2015</time>
+                            </a>
+                        </div>
+                        <p>Vestibulum id ligula porta felis euismod semper. Sed posuere consectetur est at lobortis.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
