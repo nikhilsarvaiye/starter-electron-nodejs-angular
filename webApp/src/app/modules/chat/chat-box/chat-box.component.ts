@@ -1,6 +1,7 @@
 import { Component, ViewEncapsulation, Input, OnInit, AfterViewInit, OnDestroy, ElementRef, ViewChild } from '@angular/core';
 
 import { UserService } from './../../user/user.service';
+import { NotificationService } from './../../../core';
 import { RoomService } from './../room.service';
 import { IMessage, IRoom } from '../../../../models';
 import { MessageService } from './../message.service';
@@ -40,7 +41,7 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
   private messageService: MessageService;
   private alreadyLeftChannel: boolean = false;
 
-  constructor(private roomService: RoomService, public userService: UserService) {
+  constructor(private roomService: RoomService, public userService: UserService, private readonly _notificationService: NotificationService) {
     this.user = userService.getUserDetails();
   }
 
@@ -92,7 +93,7 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
     // set chat user
     const chatUserId = (this.room.users || []).find(x => x != this.user.user_id);
     this.userService.getUserbyUserId(chatUserId).subscribe(user => {
-      this.chatWindow.user = this.userService.getUserName(user);
+      this.chatWindow.user = user;
       this.chatWindow.title = (<any>this.chatWindow.user).name;
       // this.chatWindow.about = '';
     });
@@ -105,7 +106,6 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
     // set chat users
     (this.room.users).forEach(chatUserId => {
       this.userService.getUserbyUserId(chatUserId).subscribe(user => {
-        user = this.userService.getUserName(user);
         this.chatWindow.members.push(user);
       });
     });

@@ -104,6 +104,8 @@ export class UserService extends BaseService<IUserModel> {
                     else {
                         user.password = password;
                         user.salt = salt;
+                        user.name = `${user.firstname} ${user.lastname}`;
+                        user.name = user.name ? user.name.trim() : user.name;
                         this.repository.create(user, (error: any, result: any) => {
                             if (error)
                                 callback(error, null)

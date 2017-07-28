@@ -2,6 +2,7 @@ import { Component, AfterContentInit, ViewEncapsulation, Input, Output, EventEmi
 import { ReplaySubject, Observable } from 'rxjs';
 
 import { UserService } from './../../user/user.service';
+import { NotificationService } from './../../../core';
 import { ChatService } from './../chat.service';
 import { RoomService } from './../room.service';
 import { IUserModel } from '../../../../backend/modules/user/models/user.model';
@@ -34,7 +35,7 @@ export class ChatListComponent {
   pageSize: number;
 
 
-  constructor(public userService: UserService, public chatService: ChatService, public roomService: RoomService) {
+  constructor(public userService: UserService, public chatService: ChatService, public roomService: RoomService, private readonly _notificationService: NotificationService) {
     this.userService.userDetails = this.userService.getUserDetails();
     // subscribe
     this.init();
@@ -65,10 +66,6 @@ export class ChatListComponent {
   }
 
   setChats(users: IUserModel[], rooms: IRoom[], selectRoom?: IRoom): void {
-    // remove current user
-    users.forEach(x => {
-      x = this.userService.getUserName(x);
-    });
 
     // remove current user from the users
     users = users.filter(x => x.user_id != this.userService.userDetails.user_id);
@@ -120,7 +117,7 @@ export class ChatListComponent {
   searchUsers(): void {
     this.userService.searchUsers(this.searchText).then((response) => {
       if (response.result) {
-
+        //to-do:
       }
     });
   }
@@ -188,14 +185,28 @@ export class ChatListComponent {
   }
 
   private setChatAvailabilityStatus(user: any, isOnline: boolean) {
-    const chatUser = (this.chats || []).find(x => x.users && x.users.length > 1 && x.users[1] == user.user_id);
-    if (chatUser) {
-      chatUser.isOnline = isOnline;
+    const chat = (this.chats || []).find(x => x.users && x.users.length > 1 && x.users[1] == user.user_id);
+    if (chat) {
+      chat.isOnline = isOnline;
+      // add notifications
+      if (isOnline) {
+        this.notifyUserIsOnline(chat.user);
+      }
     }
     const contactUser = (this.users || []).find(x => x.user_id == user.user_id);
     if (contactUser) {
       contactUser.isOnline = isOnline;
+      // add notifications
+      if (isOnline) {
+        this.notifyUserIsOnline(contactUser);
+      }
       // update user status on db
+    }
+  }
+
+  private notifyUserIsOnline(user: IUserModel) {
+    if (user) {
+      this._notificationService.notify(`Employee ${user.name} Online`, '', '');
     }
   }
 

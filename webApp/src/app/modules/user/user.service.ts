@@ -99,15 +99,6 @@ export class UserService {
     }
 
     getUserDetails(): IUserModel {
-        let user = this.authService.getUserDetails();
-        user = this.getUserName(user);
-        return user;
-    }
-
-    getUserName(user: IUserModel): IUserModel {
-        user.firstname = user.firstname || '';
-        user.lastname = user.lastname || '';
-        (<any>user).name = `${user.firstname} ${user.lastname}`;
-        return user;
+        return this.authService.getUserDetails();
     }
 }

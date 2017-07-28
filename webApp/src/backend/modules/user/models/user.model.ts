@@ -5,6 +5,7 @@ interface UserModel extends mongoose.Document {
     user_id: string;
     firstname: string;
     lastname: string;
+    name: string;
     password: string;
     salt: string;
     email: string;
@@ -43,6 +44,10 @@ class UserSchema {
                 required: false
             },
             lastname: {
+                type: String,
+                required: false
+            },
+            name: {
                 type: String,
                 required: false
             },

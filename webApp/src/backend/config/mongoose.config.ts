@@ -12,8 +12,8 @@ class Mongoose {
     * 3000000 - 300 seconds
     */
     var options = {
-      server: { socketOptions: { keepAlive: 3000000, connectTimeoutMS: 3000000 } },
-      replset: { socketOptions: { keepAlive: 3000000, connectTimeoutMS: 3000000 } }
+      server: { socketOptions: { keepAlive: 3000000000, connectTimeoutMS: 3000000 } },
+      replset: { socketOptions: { keepAlive: 3000000000, connectTimeoutMS: 3000000 } }
     };
     // open mongoose connection
     mongoose.connect(DataAccessConfig.connectionString, options, (err: any) => {
