@@ -7,11 +7,18 @@
 .card-block .btn i {
     color: #444;
 }
-.post {
+.post-button {
     float: right;
     width: 45px;
     padding: 10px;
     background-color: #2672ec !important;
     color: #fff;
     margin-right: -5px;
+    margin-top: 5px;
+}
+.post-box {
+    padding: 0;
+}
+.posts-container {
+    padding: 20px;
 }

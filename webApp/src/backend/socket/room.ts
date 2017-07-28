@@ -76,7 +76,6 @@ export class RoomSocket {
   // Update message sockets
   private updateMessageSockets(): void {
     // Add message sockets for new rooms
-    console.log('Updating Message Sockets');
     // console.log(this.messageSockets);
     // console.log(this.rooms);
     let validRooms = {};

@@ -41,9 +41,9 @@ export class FeedService extends BaseService<IFeedModel> {
      * @param  {(error:any,result:any)=>void} callback
      */
     paginate(pageSize: number, pageNumber: number, callback: (error: any, result: any) => void) {
-        const selectFields = `${FeedConstants.Schemas.Feed.Fields.from} ${FeedConstants.Schemas.Feed.Fields.to} ${FeedConstants.Schemas.Feed.Fields.images} ${FeedConstants.Schemas.Feed.Fields.isExternal}${FeedConstants.Schemas.Feed.Fields.likes}${FeedConstants.Schemas.Feed.Fields.text}${FeedConstants.Schemas.Feed.Fields.url}`;
+        const selectFields = `${FeedConstants.Schemas.Feed.Fields.from} ${FeedConstants.Schemas.Feed.Fields.to} ${FeedConstants.Schemas.Feed.Fields.images} ${FeedConstants.Schemas.Feed.Fields.isExternal} ${FeedConstants.Schemas.Feed.Fields.likes} ${FeedConstants.Schemas.Feed.Fields.text} ${FeedConstants.Schemas.Feed.Fields.url}`;
         const sortBy = FeedConstants.Schemas.Feed.Fields.created;
-        this.repository.paginate({}, selectFields, pageSize, pageNumber, sortBy, callback);
+        this.repository.paginate({}, '', pageSize, pageNumber, sortBy, callback);
     }
 
     /**

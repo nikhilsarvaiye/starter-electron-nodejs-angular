@@ -25,7 +25,7 @@ export class FeedApi {
             res.status(500).send(new ApiResponse((<any>res).correlationId, e));
         }
     }
-      static getFeedById(req: express.Request, res: express.Response, next): void {
+    static getFeedById(req: express.Request, res: express.Response, next): void {
         let correlationId = ApiRequest.CorrelationId.new();
         try {
             var body = req.query;
@@ -41,7 +41,7 @@ export class FeedApi {
         }
     }
 
-        static paginate(req: express.Request, res: express.Response, next): void {
+    static paginate(req: express.Request, res: express.Response, next): void {
         let correlationId = ApiRequest.CorrelationId.new();
         try {
             var body = req.query;
