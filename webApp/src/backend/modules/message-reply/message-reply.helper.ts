@@ -9,13 +9,13 @@ export class MessageReplyHelper {
 
     static isBot(message: IMessage): boolean {
         console.log("Checking if it is bot reply if message type ", message.type);
-        switch(message.type) {
-            case MessageTypes.CanteenBot: { return true; }; 
+        switch (message.type) {
+            case MessageTypes.CanteenBot: { return true; };
         }
         return false;
     }
-    
-    static getMessageReply(message: IMessage, callback: (message: IMessage) => void): void {
+
+    static getMessageReply(message: IMessage, callback: (message: IMessage, saveMessage: boolean) => void): void {
         console.log("creating message reply for message type ", message.type);
         if (message.type == MessageTypes.CanteenBot) {
             message.from = MessageTypes.CanteenBot;

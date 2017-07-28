@@ -21,11 +21,11 @@
               <div *ngIf='!room.isChannel' class="about">{{chatWindow.about}}</div>
               <div *ngIf='room.isChannel && !chatWindow.titleEditing' class="member-link">
                 <a href="#" class="status" data-toggle="dropdown" >members</a>
-                <span class="caret"></span>
-                <ul class="status-menu dropdown-menu">
-                  <li *ngFor="let member of chatWindow.members"><a href="#">{{member.name}}</a></li>
-                </ul>
-              </div>
+            <span class="caret"></span>
+            <ul class="status-menu dropdown-menu">
+              <li *ngFor="let member of chatWindow.members"><a href="#">{{member.name}}</a></li>
+            </ul>
+          </div>
           </a>
         </div>
         <div class="actions">

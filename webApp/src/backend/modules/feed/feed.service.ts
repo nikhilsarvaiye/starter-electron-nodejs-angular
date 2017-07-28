@@ -19,19 +19,31 @@ export class FeedService extends BaseService<IFeedModel> {
     }
 
     /**
-     * @param  {string} key
+     * @param  {IUserModel} item
      * @param  {(error:any,result:any)=>void} callback
      */
-    searchUsers(key: string, callback: (error: any, result: any) => void) {
-        const selectFields = '';
-        this.repository.find({
-            $or: [
-                { firstname: { "$regex": key, "$options": "i" } },
-                { lastname: { "$regex": key, "$options": "i" } },
-                { email: { "$regex": key, "$options": "i" } },
-                { user_id: { "$regex": key, "$options": "i" } },
-            ]
-        }, callback);
+    saveFeed(item: IFeedModel, callback: (error: any, result: any) => void) {
+        this.repository.create(item, callback);
+    }
+
+   /**
+     * @param  {string} _id
+     * @param  {(error:any,result:T)=>void} callback
+     */
+    getFeedById(_id: string, callback: (error: any, result: IFeedModel) => void) {
+        this.repository.findById(_id, callback);
+    }
+
+     /**
+     * @param  {string} selectFields
+     * @param  {number} pageSize
+     * @param  {number} pageNumber
+     * @param  {(error:any,result:any)=>void} callback
+     */
+    paginate(pageSize: number, pageNumber: number, callback: (error: any, result: any) => void) {
+        const selectFields = `${FeedConstants.Schemas.Feed.Fields.from} ${FeedConstants.Schemas.Feed.Fields.to} ${FeedConstants.Schemas.Feed.Fields.images} ${FeedConstants.Schemas.Feed.Fields.isExternal}${FeedConstants.Schemas.Feed.Fields.likes}${FeedConstants.Schemas.Feed.Fields.text}${FeedConstants.Schemas.Feed.Fields.url}`;
+        const sortBy = FeedConstants.Schemas.Feed.Fields.created;
+        this.repository.paginate({}, selectFields, pageSize, pageNumber, sortBy, callback);
     }
 
     /**
