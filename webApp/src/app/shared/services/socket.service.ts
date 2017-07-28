@@ -37,7 +37,7 @@ export class SocketService {
   updateItem(): Observable<any> {
     return Observable.create(observer => {
       this.socket.on('update-item', (item: any) => {
-        debugger
+        
         observer.next(item)
       });
     });
