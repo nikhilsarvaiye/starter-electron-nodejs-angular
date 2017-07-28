@@ -1,1 +1,14 @@
-<p>Canteen Component</p>
+<div class="section canteen-section">
+    <div class="row canteen-header">
+        <div class="col-md-12">
+            <p class="title no-margin">Canteen Menu</p>
+            <p class="description no-margin margin-bottom-10">List of menu items are below</p>
+        </div>
+    </div>
+    <div class="row canteen-summary margin-bottom-10">
+        <div class="col-md-12" *ngFor="let menuItem of menuItems">
+            <h4 class="title">{{menuItem.title}}</h4>
+            <p class="price">{{menuItem.price}}</p>
+        </div>
+    </div>
+</div>

@@ -135,6 +135,22 @@ export class CanteenService extends BaseService<ICanteenItemModel> {
         const orderRepository: BaseRepository<ICanteenOrderModel> = new BaseRepository(CanteenOrderSchema);
         orderRepository.paginate({}, null, pageSize, pageNumber, sortBy, callback);
     }
+
+    /**
+    * @param {string} key
+    * @param {(error:any,result:any)=>void} callback
+    */
+    search(key: string, callback: (error: any, result: any) => void) {
+        const selectFields = '';
+        this.repository.find({
+            $or: [
+                { title: { "$regex": key, "$options": "i" } },
+                { price: { "$regex": key, "$options": "i" } },
+                { type: { "$regex": key, "$options": "i" } }
+            ]
+        }, callback);
+    }
+
 }
 
 Object.seal(CanteenService);

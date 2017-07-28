@@ -74,7 +74,7 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
     if (this.focus) {
       this.focus.nativeElement.focus();
     }
-    DomController.scrollChatContent();
+    //DomController.scrollChatContent();
 
     if (this.inputSend) {
       ChatDomController.applyEmoji(this.inputSend.nativeElement, this.eventHandler);
@@ -134,7 +134,7 @@ export class ChatBoxComponent implements OnInit, AfterViewInit, OnDestroy {
 
   //* Scroll to bottom (this is called when new message is received)
   scrollToBottom(): void {
-    DomController.scrollChatContentBottom();
+    // DomController.scrollChatContentBottom();
   }
 
   // Handle keypress event, for sending chat message

@@ -59,10 +59,10 @@ export class MessageService {
     this.socketService.item()
       .subscribe(
       message => {
-        const alreadyPresent = this.list.find(x => (<any>x)._id == message._id);
+        //const alreadyPresent = this.list.find(x => (<any>x)._id == message._id);
+        const alreadyPresent = this.list.find(function (x) { return x.from == message.from && x.message == message.message && new Date(x.created).toUTCString() == new Date(message.created).toUTCString(); });
         if (!alreadyPresent) {
           this.list.push(message);
-          debugger
           this.sendNewMessageNotification(message);
         }
         this.messages.next(this.list);

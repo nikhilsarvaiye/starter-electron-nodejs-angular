@@ -26,20 +26,20 @@ export class CanteenBotMessageComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.message = this.isJsonString(this.message.message) ? JSON.parse(this.message.message) : '';
+    this.message = this.isJsonString(this.message) ? JSON.parse(this.message) : this.message;
     if (this.message) {
       setTimeout((d) => {
-        this.data = this.message;
-        this.botType = this.message.botType;
+        this.data = this.isJsonString(this.message.message) ? JSON.parse(this.message.message) : '';
+        this.botType = this.data.botType;
       }, 1);
     }
   }
 
-  isJsonString(str) : boolean {
+  isJsonString(str): boolean {
     try {
-        JSON.parse(str);
+      JSON.parse(str);
     } catch (e) {
-        return false;
+      return false;
     }
     return true;
   }

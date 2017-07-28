@@ -1,3 +1,4 @@
+import { CanteenService } from './canteen.service';
 import { IMessageReply } from './../../message-reply.interface';
 import { IMessage } from "../../../../../models";
 
@@ -24,8 +25,11 @@ export class CanteenBotMessageReply implements IMessageReply {
         new CanteenBotService().getActions(message.message, (error: any, result: any) => {
             if (!error) {
                 switch (result.result.action) {
-                    case 'menu':
-                        this.sendResponse('Canteen', message, result, callback);
+                    case 'viewMenu':
+                    case 'viewAllMenus':
+                        new CanteenService().search('a', (error: any, data: any) => {
+                            this.sendResponse('Canteen', message, result, callback, data);
+                        });
                         break;
 
                     case 'holiday':
