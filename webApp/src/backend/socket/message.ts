@@ -41,13 +41,18 @@ export class MessageSocket {
 
         // create auto message reply is it is bot
         if (MessageReplyHelper.isBot(params)) {
-          MessageReplyHelper.getMessageReply(params, (replyMessage: IMessage) => {
-            Message.create(replyMessage).subscribe(
-              message => {
-                this.nsp.emit('item', message)
-              },
-              error => console.error('Message sending failed', error)
-            );
+          MessageReplyHelper.getMessageReply(params, (replyMessage: IMessage, saveMessage: boolean) => {
+            // todo: 
+            if(saveMessage) {
+              Message.create(replyMessage).subscribe(
+                message => {
+                  this.nsp.emit('item', message)
+                },
+                error => console.error('Message sending failed', error)
+              );
+            } else {
+              this.nsp.emit('item', replyMessage);
+            }
           });
         }
       },

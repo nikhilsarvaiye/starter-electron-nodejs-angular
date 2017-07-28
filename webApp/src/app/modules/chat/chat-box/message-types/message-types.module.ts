@@ -3,6 +3,7 @@ import { PolicyComponent } from './bot/canteen/policy/policy.component';
 import { HolidayComponent } from './bot/canteen/holiday/holiday.component';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { FormsModule }   from '@angular/forms';
 
 // Other components
 import { TextMessageComponent } from './text';
@@ -10,7 +11,8 @@ import { CanteenBotMessageComponent } from './bot/canteen';
 
 @NgModule({
   imports: [
-    CommonModule
+    CommonModule,
+    FormsModule
   ],
   declarations: [
     TextMessageComponent,
