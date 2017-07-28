@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(private readonly _notificationService: NotificationService) {
     
-    // _notificationService.notify('Test Message');
+    _notificationService.notify('Welcome', 'Welcome');
   }
 
 }
