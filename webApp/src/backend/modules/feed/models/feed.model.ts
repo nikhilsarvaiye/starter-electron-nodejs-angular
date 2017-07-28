@@ -4,14 +4,15 @@ import * as mongoose from "mongoose";
 interface PostCommentModel extends mongoose.Document {
     from: string;
     comment: string;
+    created: Date;
 }
 
 interface PostImageModel extends mongoose.Document {
-    
+
 }
 
 interface PostLikeModel extends mongoose.Document {
-    
+
 }
 
 interface FeedModel extends mongoose.Document {
@@ -23,12 +24,13 @@ interface FeedModel extends mongoose.Document {
     isExternal: boolean;
     url: string;
     likes: PostLikeModel[];
+    created: Date;
 }
 
 class FeedSchema {
 
-    static get schema () {
-        var schema =  new mongoose.Schema({
+    static get schema() {
+        var schema = new mongoose.Schema({
             from: {
                 type: String,
                 required: true
@@ -42,10 +44,10 @@ class FeedSchema {
             comments: {
                 type: Object
             },
-            images:  {
+            images: {
                 type: Object
             },
-            isExternal : {
+            isExternal: {
                 type: Boolean
             },
             url: {
@@ -53,6 +55,10 @@ class FeedSchema {
             },
             likes: {
                 type: Object
+            },
+            created: {
+                type: Date,
+                default: Date.now
             }
         });
 
@@ -62,7 +68,7 @@ class FeedSchema {
 //var schema = DataAccess.mongooseConnection.model<UserModel>("Users", UserSchema.schema);
 var schema;
 // added below check as so that we can use the same models on client side
-if(mongoose.model)
+if (mongoose.model)
     schema = mongoose.model<FeedModel>("Feeds", FeedSchema.schema);
 
 export { FeedModel as IFeedModel }

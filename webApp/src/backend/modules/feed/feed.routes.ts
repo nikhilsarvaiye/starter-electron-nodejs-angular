@@ -14,7 +14,8 @@ var router = express.Router();
 export class FeedRoutes {
     
     get routes () {
-        router.get('/search', AuthHandler.Authenticate, FeedApi.searchUsers);
+        router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
+        router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
         return router;
     }
 }
