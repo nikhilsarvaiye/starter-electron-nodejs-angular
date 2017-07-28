@@ -229,10 +229,10 @@ export class ChatListComponent {
   }
 
   private getContactPic(user: IUserModel) {
-    return (<any>user).pic ? (<any>user).pic : '/assets/images/922131324103b4ba2ad5e4c45ff845ae.jpg';
+    return (<any>user).pic ? (<any>user).pic : '/assets/images/avatar.jpg';
   }
 
   private getChannelPic(room: IRoom) {
-    return (<any>room).pic ? (<any>room).pic : '/assets/images/922131324103b4ba2ad5e4c45ff845ae.jpg';
+    return (<any>room).pic ? (<any>room).pic : '/assets/images/avatar.jpg';
   }
 }

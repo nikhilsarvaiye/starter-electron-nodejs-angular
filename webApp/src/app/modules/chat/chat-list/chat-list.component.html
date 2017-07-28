@@ -49,7 +49,7 @@
                     </div>
                   </div>
                   <div class="chat-group">
-                    <a *ngFor="let user of users | filter:{name: searchText}" (click)="onContactClick(user)" class="ripple chat-room">
+                    <a *ngFor="let user of users | filter:{name: searchText}" (click)="onContactClick(user)" class="ripple chat-room" [hidden]="!user.name">
                       <img alt="user" class="header-avatar img-circle" src="{{user.pic}}" title="user" />
                       <span [ngClass]="{'status-online': user.isOnline, 'status-offline': !user.isOnline}" class=""></span>
                       <div class="name">{{ user.name }}</div> 
