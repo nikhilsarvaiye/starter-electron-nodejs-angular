@@ -11,6 +11,7 @@
 import * as express from "express";
 import * as path from "path";
 import { AuthRoutes, UserRoutes } from './modules/user/user.routes';
+import { FeedRoutes } from './modules/feed/feed.routes';
 import { CanteenRoutes } from './modules/message-reply/bot/canteen/canteen.routes';
 
 const app = express();
@@ -23,6 +24,7 @@ export class ServerRoutes {
         app.use("/auth", new AuthRoutes().routes);
         app.use("/api/user", new UserRoutes().routes);
         app.use("/api/canteen", new CanteenRoutes().routes);
+        app.use("/api/feed", new FeedRoutes().routes);
         
         // Set app to use router as the default route
         app.use('*', router);
