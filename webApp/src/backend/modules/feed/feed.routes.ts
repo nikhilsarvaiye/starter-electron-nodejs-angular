@@ -9,8 +9,6 @@ import { AuthHandler } from './../../core/auth/auth.handler';
 
 var router = express.Router();
 
-
-
 export class FeedRoutes {
 
         get routes() {
