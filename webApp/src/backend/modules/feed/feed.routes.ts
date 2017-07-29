@@ -17,6 +17,7 @@ export class FeedRoutes {
         router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
         router.post('/getFeedById', AuthHandler.Authenticate, FeedApi.getFeedById);
         router.get('/paginate', AuthHandler.Authenticate, FeedApi.paginate);
+         router.get('/updateFeed', AuthHandler.Authenticate, FeedApi.saveLikeByUserId);
         router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
         return router;
     }

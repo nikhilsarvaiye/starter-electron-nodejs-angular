@@ -34,6 +34,17 @@ export class FeedService {
         });
     }
     
+  updateFeed(post: IFeedModel): Observable<IFeedModel> {
+        return new Observable(observer => {
+            this.http.post(`/api/feed/updateFeed`, post, this.headers)
+                .subscribe((res: Response) => {
+                    observer.next(res.json().result || null)
+                }, (error) => {
+                    PromiseErrorHandler.handleError(error);
+                });
+        });
+    }
+
     getUserFeeds(userId: string, pageSize: number, pageNumber: number): Observable<IFeedModel[]> {
         return new Observable(observer => {
             this.http.get(`/api/feed/paginate?userId=${userId}&pageSize=${pageSize}&pageNumber=${pageNumber}`, this.headers)
