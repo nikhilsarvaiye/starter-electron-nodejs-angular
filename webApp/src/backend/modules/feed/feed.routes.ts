@@ -13,13 +13,14 @@ var router = express.Router();
 
 export class FeedRoutes {
 
-    get routes() {
-        router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
-        router.post('/getFeedById', AuthHandler.Authenticate, FeedApi.getFeedById);
-        router.get('/paginate', AuthHandler.Authenticate, FeedApi.paginate);
-        router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
-        return router;
-    }
+        get routes() {
+                router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
+                router.post('/getFeedById', AuthHandler.Authenticate, FeedApi.getFeedById);
+                router.get('/paginate', AuthHandler.Authenticate, FeedApi.paginate);
+                router.get('/updateFeed', AuthHandler.Authenticate, FeedApi.saveLikeByUserId);
+                router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
+                return router;
+        }
 }
 
 Object.seal(FeedRoutes);

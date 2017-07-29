@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IUserModel } from './../user/user.model';
 import { UserService } from './../user/user.service';
 import { DomController } from './../../shared/controllers/dom/dom-controller';
-import { IFeedModel } from './../../../backend/modules/feed/models/feed.model'
+import { IFeedModel, IPostLikeModel } from './../../../backend/modules/feed/models/feed.model'
 import { FeedService } from './feed.service'
 import { IChat } from './../chat/chat-list/chat-list.model';
 
@@ -76,7 +76,21 @@ export class FeedComponent implements OnInit {
     }
 
     like(post: IFeedModel) {
+<<<<<<< HEAD
         
+=======
+        this.newPost.from = this.user.user_id;
+        this.newPost.likes = this.newPost.likes || <IPostLikeModel[]>[];
+        this.newPost.likes.push(<IPostLikeModel>{
+            emotion: 'Like',
+            userId: this.user.user_id
+        });
+        this._feedService.updateFeed(this.newPost).subscribe(post => {
+            this.posts = this.posts || [];
+            this.posts.push(post);
+            this.newPost = <IFeedModel>{};
+        });
+>>>>>>> 9ab109649cb37f4d930ae5263d37d6a51ba77a17
     }
 
     /*

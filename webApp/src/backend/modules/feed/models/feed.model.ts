@@ -12,7 +12,8 @@ interface PostImageModel extends mongoose.Document {
 }
 
 interface PostLikeModel extends mongoose.Document {
-
+    emotion: string; /* Like, Wow, Love, Lol */
+    userId: string;
 }
 
 interface FeedModel extends mongoose.Document {
@@ -72,4 +73,8 @@ if (mongoose.model)
     schema = mongoose.model<FeedModel>("Feeds", FeedSchema.schema);
 
 export { FeedModel as IFeedModel }
+
+export { PostCommentModel as IPostCommentModel }
+export { PostImageModel as IPostImageModel }
+export { PostLikeModel as IPostLikeModel }
 export { schema as FeedSchema }

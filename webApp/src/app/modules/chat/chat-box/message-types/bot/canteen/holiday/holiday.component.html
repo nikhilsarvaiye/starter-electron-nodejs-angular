@@ -1,15 +1,16 @@
-<div class="section holiday-section">
-    <div class="row holiday-header">
-        <div class="col-md-12">
-            <p class="title no-margin">Holidays</p>
-            <p class="description no-margin margin-bottom-10">Holiday calendar for year {{year}}.</p>
-        </div>
+<div class="card bg-white">
+    <div class="card-header">
+        <p class="no-margin title">Holidays</p>
+        <p class="no-margin description">Holiday calendar for year {{year}}</p>
     </div>
-    <div class="row holiday-summary margin-bottom-10">
-        <div class="col-md-12" *ngFor="let holiday of holidays">
-            <h4 class="title">{{holiday.title}}</h4>
-            <p class="date">{{holiday.date | date: 'shortDate'}}</p>
-            <p class="description">{{holiday.description}}</p>
-        </div>
+    <div class="card-block">
+        <ul class="notifications-list list-unstyled">
+            <li class="margin-bottom-10" *ngFor="let holiday of holidays">
+                <h4 class="title">{{holiday.title}}</h4>
+                <p class="date">{{holiday.date | date: 'shortDate'}}</p>
+                <p class="description">{{holiday.description}}</p>
+            </li>
+        </ul>
+        <div class="text-info" *ngIf="!holidays.length">Sorry we didn't find any holiday's for requested question.</div>
     </div>
 </div>

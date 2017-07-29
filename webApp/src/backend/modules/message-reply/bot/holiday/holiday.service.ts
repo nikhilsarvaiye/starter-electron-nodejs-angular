@@ -58,16 +58,30 @@ export class HolidayService extends BaseService<IHolidayModel> {
      * @param  {string} key
      * @param  {(error:any,result:any)=>void} callback
      */
-    search(key: string, callback: (error: any, result: any) => void) {
+    search(key: any, callback: (error: any, result: any) => void) {
         const selectFields = '';
-        this.repository.find({
-            $or: [
-                { title: { "$regex": key, "$options": "i" } },
-                { description: { "$regex": key, "$options": "i" } },
-                { type: { "$regex": key, "$options": "i" } },
-                { year: { "$regex": key, "$options": "i" } },
-            ]
-        }, callback);
+        let index: number = 0;
+        Object.keys(key).map(d => {
+            if (key[d]) {
+                if (d == 'date') {
+                    let filterDate: Date = new Date();
+                    filterDate = new Date(key[d]) || null;
+                    if (filterDate) {
+                        key[d] = { "$gte": filterDate, "$lt": filterDate.setDate(filterDate.getDate() + 1) };
+                    }
+                } else {
+                    key[d] = { "$regex": key[d], "$options": "i" };
+                }
+                index++;
+            } else {
+                delete key[d];
+            }
+        });
+        if (index > 0) {
+            this.repository.find(index === 1 ? key : { $and: key }, callback);
+        } else {
+            this.repository.find({}, callback);
+        }
     }
 }
 

@@ -145,7 +145,6 @@ export class CanteenService extends BaseService<ICanteenItemModel> {
         this.repository.find({
             $or: [
                 { title: { "$regex": key, "$options": "i" } },
-                { price: { "$regex": key, "$options": "i" } },
                 { type: { "$regex": key, "$options": "i" } }
             ]
         }, callback);

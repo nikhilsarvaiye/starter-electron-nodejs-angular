@@ -18,7 +18,7 @@ export class CanteenBotMessageComponent implements OnInit {
 
   private user: IUserModel;
 
-  data;
+  data: any;
   botType;
 
   constructor(private userService: UserService) {
@@ -29,7 +29,7 @@ export class CanteenBotMessageComponent implements OnInit {
     this.message = this.isJsonString(this.message) ? JSON.parse(this.message) : this.message;
     if (this.message) {
       setTimeout((d) => {
-        this.data = this.isJsonString(this.message.message) ? JSON.parse(this.message.message) : '';
+        this.data = this.isJsonString(this.message.message) ? JSON.parse(this.message.message) : this.message;
         this.botType = this.data.botType;
       }, 1);
     }
