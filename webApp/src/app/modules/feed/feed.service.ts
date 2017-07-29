@@ -36,7 +36,7 @@ export class FeedService {
 
     addLike(postId: string, userId: string): Observable<IFeedModel> {
         return new Observable(observer => {
-            this.http.post(`/api/feed/addLike`, {
+            this.http.post(`/api/feed/like`, {
                 postId: postId,
                 userId: userId
             }, this.headers)

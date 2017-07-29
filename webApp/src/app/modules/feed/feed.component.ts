@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { IUserModel } from './../user/user.model';
 import { UserService } from './../user/user.service';
 import { DomController } from './../../shared/controllers/dom/dom-controller';
-import { IFeedModel, IPostLikeModel } from './../../../backend/modules/feed/models/feed.model'
+import { IFeedModel, IPostLikeModel, IPostCommentModel } from './../../../backend/modules/feed/models/feed.model'
 import { FeedService } from './feed.service'
 import { IChat } from './../chat/chat-list/chat-list.model';
 
@@ -16,6 +16,7 @@ export class FeedComponent implements OnInit {
     private user: IUserModel;
     private posts: IFeedModel[];
     private newPost: IFeedModel;
+    private newComment: IPostLikeModel;
 
     private pageNumber: number;
     private pageSize: number;
@@ -25,6 +26,7 @@ export class FeedComponent implements OnInit {
     constructor(private _userService: UserService, private _feedService: FeedService) {
         this.user = _userService.getUserDetails();
         this.newPost = <IFeedModel>{};
+        this.newComment = <IPostLikeModel>{};
         this.posts = null;
         this.pageNumber = 1;
         this.pageSize = 20;
@@ -53,6 +55,10 @@ export class FeedComponent implements OnInit {
             }
             this.posts = this.posts || [];
             feeds.forEach(x => this.posts.push(x));
+            // update likes
+            this.posts.forEach((post) => {
+                this.updatePostLikes(post);
+            });
         });
     }
 
@@ -64,6 +70,7 @@ export class FeedComponent implements OnInit {
     post() {
         if (this.newPost && this.newPost.text) {
             this.newPost.from = this.user.user_id;
+            this.newPost.userName=this.user.name;
             this.newPost.comments = [];
             this.newPost.images = [];
             this.newPost.likes = [];
@@ -71,23 +78,47 @@ export class FeedComponent implements OnInit {
                 this.posts = this.posts || [];
                 this.posts.push(post);
                 this.newPost = <IFeedModel>{};
+                // update likes
+                this.posts.forEach((post) => {
+                    this.updatePostLikes(post);
+                });
             });
         }
     }
 
     like(post: IFeedModel) {
-        debugger
         this._feedService.addLike(post._id, this.user.user_id).subscribe(likesCount => {
-            (<any>this.newPost).likesCount = likesCount;
+            (post.likes || []).push(<IPostLikeModel>{
+                emotion: 'Like',
+                userId: this.user.user_id
+            });
+            this.updatePostLikes(post);
         });
     }
 
     loadComments(post: IFeedModel) {
-
+        (<any>post).showComments = !(<any>post).showComments;
     }
 
     comment(post: IFeedModel) {
 
+    }
+
+    updatePostLikes(post: IFeedModel) {
+        (<any>post).showComments = false;
+        // if current is the users post
+        if (post.from == this.user.user_id) {
+            (<any>post).totalLikes = (post.likes || []).length;
+        }
+        else {
+            // check if current user is been already in likes or not
+            if (post.likes && post.likes.find(x => x.userId === this.user.user_id)) {
+                (<any>post).liked = true;
+            }
+            else {
+                // allow user to like 
+            }
+        }
     }
 }
 
