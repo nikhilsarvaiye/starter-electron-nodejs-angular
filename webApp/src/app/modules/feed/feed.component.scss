@@ -33,3 +33,23 @@
         color: #2672ec;
     }
 }
+.active-link {
+    color: #2672ec;
+}
+.active-emotion-link {
+    color: #a94442;
+}
+.post-comments {
+    .media {
+        a img {
+
+        }
+        textarea {
+            padding: 2px 5px;
+            border: 1px solid #ccc;
+            margin: 2px 0px;
+            width: 200px;
+            height: 25px;
+        }
+    }
+}

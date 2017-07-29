@@ -104,14 +104,21 @@
                   <a class="pull-right" href="javascript:;">
                         <i class="icon-share"></i>
                       </a>
-                  <a class="m-r" href="javascript:;" (click)="like(post)">
-                        <i class="icon-heart"></i>&nbsp;Like
-                      </a>
-                  <a href="javascript:;" (click)="loadComments(post)">
+                  <a *ngIf="post.from == this.user.user_id" class="m-r active-emotion-link" href="javascript:;">
+                    Likes {{ post.totalLikes }}
+                  </a>
+                  <a *ngIf="post.from != this.user.user_id && post.liked" class="m-r active-emotion-link" href="javascript:;">
+                    Liked
+                  </a>
+                  <a *ngIf="post.from != this.user.user_id && !post.liked" class="m-r active-emotion-link" href="javascript:;" (click)="like(post)">
+                    <i class="icon-heart"></i>&nbsp;Like
+                  </a>
+
+                  <a href="javascript:;" class="" (click)="loadComments(post)">
                         <i class="icon-bubble"></i>&nbsp;Comment
                       </a>
                 </div>
-                <div class="post-comments" *ngIf="post.comments">
+                <div class="post-comments" *ngIf="post.comments && post.showComments">
                   <div class="media" *ngFor="let comment of post.comments">
                     <a class="pull-left" href="javascript:;">
                             <img class="media-object avatar img-rounded" src="./../../../assets/images/avatar.jpg" alt="">
@@ -125,6 +132,23 @@
                         </a>
                       </div>
                       <p>{{comment.comment}}</p>
+                    </div>
+                  </div>
+                  <div class="media" *ngIf="post.showComments">
+                    <a class="pull-left" href="javascript:;">
+                      <img class="media-object avatar img-rounded" src="./../../../assets/images/avatar.jpg" alt="">
+                    </a>
+                    <div class="comment">
+                      <div class="comment-author">
+                        <a href="javascript:;">
+                              {{user.name}}
+                        </a>
+                      </div>
+                      <form type="submit" (ngSubmit)="comment(post)" #commentForm="ngForm">
+                        <p>
+                          <textarea [(ngModel)]="newComment.comment" name="post-input" placeholder="" rows="2" class="form-control shadow no-border"></textarea>
+                        </p>
+                      </form>
                     </div>
                   </div>
                 </div>

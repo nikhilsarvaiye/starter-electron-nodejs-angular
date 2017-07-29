@@ -17,6 +17,7 @@ interface PostLikeModel extends mongoose.Document {
 }
 
 interface FeedModel extends mongoose.Document {
+    userName:string;
     from: string;
     to: string;
     text: string;
@@ -32,6 +33,9 @@ class FeedSchema {
 
     static get schema() {
         var schema = new mongoose.Schema({
+            userName:{
+                type:String
+            },
             from: {
                 type: String,
                 required: true
