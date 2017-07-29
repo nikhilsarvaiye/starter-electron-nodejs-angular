@@ -23,11 +23,11 @@
   </div>
   <div class="main-content">
 
-    <!-- <div *ngFor="let chat of chats" class="ripple chat-room">
+    <div *ngFor="let chat of chats" class="ripple chat-room">
       <div [hidden]="!chat.showChatBox">
         <chat-box [render]="chat.showChatBox" [room]="chat"></chat-box>
       </div>
-    </div> -->
+    </div>
 
     <div class="">
       <div class="row">
@@ -56,10 +56,10 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-9">
+        <div class="col-sm-9  posts-container">
           <div class="card bg-primary no-border composer">
             <form (ngSubmit)="post()" #loginForm="ngForm" class="form-layout">
-              <div class="card-block">
+              <div class="card-block post-box">
                 <textarea [(ngModel)]="newPost.text" name="post-input" placeholder="What's on your mind" rows="3" class="form-control shadow no-border"></textarea>
                 <div class="composer-options">
                   <button class="btn" type="button">
@@ -74,7 +74,7 @@
                   <button class="btn" type="button">
                       <i class="icon-clock"></i>
                     </button>
-                  <button type="submit" class="btn btn-default btn-block post">
+                  <button type="submit" class="btn btn-default btn-block post-button">
                     <span>Post</span>
                 </button>
                 </div>
@@ -131,6 +131,8 @@
               </div>
             </div>
           </div>
+          <div *ngIf="hasPosts && posts && posts.length !== 0" class="load-more" (click)="loadMore()"><a>Load more</a></div>
+          <div *ngIf="!(hasPosts && posts && posts.length !== 0)" class="load-more no-items"><a>No posts in news feed</a></div>
         </div>
       </div>
     </div>

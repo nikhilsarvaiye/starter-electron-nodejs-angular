@@ -12,9 +12,11 @@ var router = express.Router();
 
 
 export class FeedRoutes {
-    
-    get routes () {
+
+    get routes() {
         router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
+        router.post('/getFeedById', AuthHandler.Authenticate, FeedApi.getFeedById);
+        router.get('/paginate', AuthHandler.Authenticate, FeedApi.paginate);
         router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
         return router;
     }

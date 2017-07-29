@@ -13,3 +13,13 @@ a[tabindex]:focus {
     color:blue;
     outline: none;
 }
+.filter-dropdowns {
+    padding: 10px 10px 0 0;
+}
+.graph-container {
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.graph-container.only-graph {
+    margin-top: 60px;
+}

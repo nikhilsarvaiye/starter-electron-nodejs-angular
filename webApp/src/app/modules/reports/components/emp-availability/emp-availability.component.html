@@ -1,12 +1,24 @@
-<div>
-<table>
-       <tr>
-    <select [(ngModel)]="selectedfilterValue" (ngModelChange)="onOptionChange($event)" >     
+<div class="graph-container">
+    <table>
+        <tr>
+
+            <div class="filter-dropdowns">
+                <div class="row">
+                    <div class="col-sm-12">
+                        <div class="controls inline w150">
+                            <label class="control-label" for="position">Filter</label>
+                            <div class="m-b">
+                                <select [(ngModel)]="selectedfilterValue" (ngModelChange)="onOptionChange($event)">     
         <option *ngFor="let x of chartFilterOptions" [value]="x.id">{{x.name}}</option>
-    </select> 
-       </tr>
-       <tr>
-      <chart [options]="availabilityChart"  style="width:80%; height:80%;"></chart>
-         </tr>
-</table>
-</div>
+    </select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </tr>
+        <tr>
+            <chart [options]="availabilityChart" style="width:80%; height:80%;"></chart>
+        </tr>
+    </table>
+    </div>

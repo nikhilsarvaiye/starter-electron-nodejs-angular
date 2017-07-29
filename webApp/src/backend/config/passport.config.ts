@@ -4,12 +4,10 @@ import { JwtStrategy } from './../core/auth/strategies/jwt.strategy';
 
 
 passport.serializeUser(function (user, done) {
-     console.log("Trying to serializeUser user");
      done(null, user);
 });
 
 passport.deserializeUser(function (user, done) {
-    console.log("Trying to deserializeUser user");
     done(null, (<any>user) ? (<any>user).user : null);
 });
 

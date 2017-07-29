@@ -24,6 +24,7 @@ import { SharedModule } from './shared';
 // new custom import
 import { UserModule } from './modules/user/user.module';
 import { ContentModule } from './modules/content';
+import { FeedModule } from './modules/feed';
 import { ProfileModule } from './modules/profile';
 import { ReportsModule } from './modules/reports';
 
@@ -47,6 +48,7 @@ import { ReportsModule } from './modules/reports';
     UserModule,
     ContentModule,
     ProfileModule,
+    FeedModule,
     ReportsModule
   ],
   providers: [
