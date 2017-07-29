@@ -24,11 +24,11 @@
                             <p class="price">{{item.price}}</p>
                         </td>
                         <td>
-                            <input class="cls-form-control" type="number" value="1" [(ngModel)]="item.quantity" />
+                            <input class="cls-form-control" type="number" min="0" [(ngModel)]="item.quantity" />
                         </td>
                     </tr>
                     <tr>
-                        <td colspan="2" class="text-right"><b>Total Bill</b></td>
+                        <td colspan="2"><b>Total Bill</b></td>
                         <td><b>{{getTotalBill()}}</b></td>
                         <td>
                             <button *ngIf="!showAlert && getTotalBill() > 0" type="button" class="cls-btn" (click)="showAlert = true;">Place Order</button>

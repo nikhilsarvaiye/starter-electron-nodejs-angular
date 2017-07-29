@@ -1,6 +1,7 @@
 body {
     overflow: hidden;
 }
+
 .chat-panel.conversation-open {
     position: relative;
     margin-left: 0;
@@ -15,6 +16,9 @@ body {
         position: relative;
         display: block;
         background-color: #f6f6f6;
+    }
+    .canteen-bot-container {
+        background-color: inherit;
     }
     .chat-conversation-footer {
         position: absolute;
@@ -91,7 +95,7 @@ body {
                 .member-link {
                     font-size: 12px;
                     margin-top: 1px;
-                    :hover {
+                     :hover {
                         text-decoration: underline;
                     }
                     ul {
@@ -110,7 +114,7 @@ body {
                 }
                 .cancel {
                     color: #444;
-                    margin-left: 5px; 
+                    margin-left: 5px;
                 }
                 .title-edit {
                     border-radius: 10px;
