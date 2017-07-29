@@ -1,4 +1,5 @@
 import { CommonModule } from '@angular/common';
+import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule }   from '@angular/forms';
 import { ReactiveFormsModule } from "@angular/forms";
@@ -9,6 +10,11 @@ import { ChartModule } from 'angular2-highcharts';
 import { AuthService } from './../../core/service/auth.service';
 import { ReportsService } from './reports.service';
 import { ReportsComponent } from './reports.component';
+import { SentimentAnalysisComponent } from './components/sentiment-analysis/sentiment-analysis.component';
+import { ProdHoursComponent } from './components/prod-hours/prod-hours.component';
+import { EmpAllocationComponent } from './components/emp-allocation/emp-allocation.component';
+import { EmpAvailabilityComponent } from './components/emp-availability/emp-availability.component';
+
 import { data } from '../data';
 
 @NgModule({
@@ -22,7 +28,11 @@ import { data } from '../data';
     ChartModule.forRoot(require('highcharts'))
   ],
   declarations: [
-    ReportsComponent
+    ReportsComponent,
+    SentimentAnalysisComponent,
+    ProdHoursComponent,
+    EmpAllocationComponent,
+    EmpAvailabilityComponent
   ],
   providers: [AuthService, ReportsService],
   exports: [

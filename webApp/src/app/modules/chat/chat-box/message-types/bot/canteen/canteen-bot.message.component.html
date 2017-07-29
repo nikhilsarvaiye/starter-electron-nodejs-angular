@@ -3,6 +3,7 @@
   <policy *ngIf="botType == 'Policy'" [data]="data"></policy>
   <canteen *ngIf="botType == 'Canteen'" [data]="data"></canteen>
   <div *ngIf="!botType">
-    <p>{{data ? data.message : message.message}}</p>
+    <p>{{message.message}}</p>
+    <!--<p>{{message.result.fulfillment.speech}}</p>-->
   </div>
 </div>

@@ -8,9 +8,9 @@ import { HolidayService } from './../holiday/holiday.service';
 
 export class CanteenBotMessageReply implements IMessageReply {
 
-    public sendResponse(type: string, message: IMessage, response: any, saveMessage: boolean, callback: (message: IMessage, saveMessage: boolean) => void, data: any = null): void {
+    public sendResponse(type: string, message: IMessage, response: any, callback: (message: IMessage) => void, data: any = null): void {
         // prepare result
-        message.message = JSON.stringify({ 
+        message.message = JSON.stringify({
             'action': response.result.action,
             'botType': type,
             'result': data || response,
@@ -18,17 +18,17 @@ export class CanteenBotMessageReply implements IMessageReply {
         });
 
         // return will callback so that message service can emit the message
-        callback(message, saveMessage);
+        callback(message);
     }
 
-    public createMessageReply(message: IMessage, callback: (message: IMessage, saveMessage: boolean) => void): void {
+    public createMessageReply(message: IMessage, callback: (message: IMessage) => void): void {
         new CanteenBotService().getActions(message.message, (error: any, result: any) => {
             if (!error) {
                 switch (result.result.action) {
                     case 'viewMenu':
                     case 'viewAllMenus':
                         new CanteenService().search('canteen', (error: any, data: any) => {
-                            this.sendResponse('Canteen', message, result, false, callback, data);
+                            this.sendResponse('Canteen', message, result, callback, data);
                         });
                         break;
 
@@ -36,19 +36,20 @@ export class CanteenBotMessageReply implements IMessageReply {
                     case 'showHolidays':
                     case 'getHolidays':
                         new HolidayService().search('holiday', (error: any, data: any) => {
-                            this.sendResponse('Holiday', message, result, true, callback, data);
+                            this.sendResponse('Holiday', message, result, callback, data);
                         });
                         break;
 
                     case 'policy':
                     case 'viewPolicies':
                         new PolicyService().search('policy', (error: any, data: any) => {
-                            this.sendResponse('Policy', message, result, true, callback, data);
+                            this.sendResponse('Policy', message, result, callback, data);
                         });
                         break;
 
                     default:
-                        this.sendResponse('', message, result, false, callback);
+                        this.sendResponse('', message, result, callback);
+                        //this.sendResponse('', message, result.result.fulfillment.speech, callback);
                         break;
                 }
             }

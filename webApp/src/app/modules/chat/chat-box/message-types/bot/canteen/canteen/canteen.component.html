@@ -1,49 +1,71 @@
-<div class="card bg-white">
-    <div class="card-header">
-        <p class="no-margin title">Canteen Menu</p>
-        <p class="no-margin description">Items to serve today</p>
-    </div>
-    <div class="card-block">
-        <div class="table-responsive">
-            <table class="table table-hover" *ngIf="menuItems.length">
-                <thead>
-                    <tr>
-                        <th>&nbsp;</th>
-                        <th>Menu Name</th>
-                        <th>Price</th>
-                        <th>Quantity</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr *ngFor="let item of menuItems">
-                        <td><input type="checkbox" name="chkboxItem" [(ngModel)]="item.selected"></td>
-                        <td>
-                            <p class="title">{{item.title}}</p>
-                        </td>
-                        <td>
-                            <p class="price">{{item.price}}</p>
-                        </td>
-                        <td>
-                            <input class="cls-form-control" type="number" value="1" [(ngModel)]="item.quantity" />
-                        </td>
-                    </tr>
-                    <tr>
-                        <td colspan="2" class="text-right"><b>Total Bill</b></td>
-                        <td><b>{{getTotalBill()}}</b></td>
-                        <td>
-                            <button *ngIf="!showAlert && getTotalBill() > 0" type="button" class="cls-btn" (click)="showAlert = true;">Place Order</button>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
-            <div class="alerts">
-                <div *ngIf="showAlert && !actionResponse">
-                    <label class="text-info">Are you sure you want place the order?</label>
-                    <label class="cls-btn" (click)="placeOrder();">OK</label>
-                    <label class="cls-btn bg-grey" (click)="showAlert = false; actionResponse = null;">Cancel</label>
-                </div>
-                <div class="text-danger" *ngIf="actionResponse">{{actionResponse}}</div>
-            </div>
+<div class="section canteen-section">
+    <div class="row canteen-header">
+        <div class="col-md-12">
+            <p class="title no-margin">Canteen Menu</p>
+            <p class="description no-margin margin-bottom-10">List of menu items are below</p>
         </div>
     </div>
+    <!--<div class="row canteen-summary margin-bottom-10">
+       <div class="col-md-12" *ngFor="let menuItem of menuItems">
+           
+<h4 class="title">{{menuItem.title}}</h4>
+<p class="price">{{menuItem.price}}</p>
+    </div> 
+    </div>-->
+
+    <div class="row canteen-summary margin-bottom-10">
+        <!--<div class="col-md-12" *ngFor="let menuItem of menuItems">-->
+        <div class="col-md-12">
+            <table class="table table-responsive table-bordered">
+                <tr>
+                    <th>Select Item</th>
+                    <th>Menu Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                </tr>
+                <tr *ngFor="let menuItem of menuItems">
+                    <td><input type="checkbox" name="chkboxItem" value="chkbox" ></td>
+                    <td>
+                        <h4 class="title">{{menuItem.title}}</h4>
+                    </td>
+                    <td>
+                        <p class="price">{{menuItem.price}}</p>
+                    </td>
+                    <td>
+                   <input type="number" value="1"/>
+                    </td>
+
+                </tr>
+                <tr>
+                    <td colspan="2">Total bill = </td>
+                   
+                    <td><input type="text" readonly/></td>
+                    <td><input type="button" value="Place Order" name="btnplaceOrder" disabled/></td>
+                    </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <!--
+      <div ng-repeat="menuItem of menuItems">
+
+            <div class="row">
+                <div class="col col-50"><input type="checkbox" name="chkboxItem" value="chkbox"></div>
+              <div class="title">  {{menuItem[$index]}}</div>
+                <div class="price">{{menuItem[$index + 1]}}</div>
+            </div>
+     </div>
+     -->
+    <!--<table>
+                <tr>
+
+            <td><input type="checkbox" name="chkboxItem" value="chkbox"></td>
+            <td><h4 class="title">{{menuItem.title}}</h4></td>
+            <td><p class="price">{{menuItem.price}}</p></td>
+                    </tr>
+
+            </table>-->
+    <!-- </div>-->
+
 </div>
