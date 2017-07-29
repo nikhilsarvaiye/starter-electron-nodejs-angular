@@ -1,0 +1,64 @@
+<div class="card bg-white">
+    <div class="card-header">
+        <p class="no-margin title">Attendance Regularization</p>
+        <p class="no-margin description">Mark your attendance discripancies</p>
+    </div>
+    <div class="card-block">
+        <h4 class="card-title">{{user.name}}</h4>
+        <p class="card-text no-margin">{{user.user_id}}</p>
+        <div class="">
+            <table class="table table-hover" *ngIf="attendance.length">
+                <thead>
+                    <tr>
+                        <th>&nbsp;</th>
+                        <th>Date</th>
+                        <th>Time In</th>
+                        <th>Time Out</th>
+                        <th>Type</th>
+                        <th>Description</th>
+                        <th>Reason</th>
+                        <th>Comments</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let item of attendance">
+                        <td><input type="checkbox" name="chkboxItem" [(ngModel)]="item.selected"></td>
+                        <td>{{item.Date | date: 'shortDate'}}</td>
+                        <td>{{item.TimeIn | date: 'shortTime'}}</td>
+                        <td>{{item.TimeOut | date: 'shortTime'}}</td>
+                        <td>{{item.DiscrepencyType}}</td>
+                        <td>{{item.DiscrepencyDescription}}</td>
+                        <td>
+                            <select class="form-control cls-form-control" [ngModel]="item.ARRegularizedReason">
+                                <option value="">Select</option>
+                                <option value="Error In Card">Error In Card</option>
+                                <option value="Late Coming">Late Coming</option>
+                                <option value="Out Door Duty">Out Door Duty</option>
+                                <option value="Early Going">Early Going</option>
+                                <option value="Shift Not Mapped">Shift Not Mapped</option>
+                                <option value="Single Punch">Single Punch</option>
+                                <option value="Was On Training">Was On Training</option>
+                                <option value="Wil Be On Official Tour">Wil Be On Official Tour</option>
+                                <option value="Will Be On Training">Will Be On Training</option>
+                                <option value="Worked In Other Shift">Worked In Other Shift</option>
+                            </select>
+                        </td>
+                        <td>
+                            <input class="cls-form-control" type="text" [(ngModel)]="item.ARRegularizedComments" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="alerts footer">
+                <button *ngIf="!showAlert" type="button" class="cls-btn" (click)="showAlert = true;">Submit</button>
+                <div *ngIf="showAlert && !actionResponse">
+                    <label class="text-info">Are you sure you want to submit?</label>
+                    <label class="cls-btn" (click)="submitDiscripancies();">OK</label>
+                    <label class="cls-btn bg-grey" (click)="showAlert = false; actionResponse = null;">Cancel</label>
+                </div>
+                <div class="text-info" *ngIf="actionResponse">{{actionResponse}}</div>
+                <div class="text-info" *ngIf="!actionResponse && !attendance.length">Congratulations you don't have any discripancies.</div>
+            </div>
+        </div>
+    </div>
+</div>

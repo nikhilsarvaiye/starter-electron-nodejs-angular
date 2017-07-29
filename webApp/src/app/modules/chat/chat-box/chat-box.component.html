@@ -44,7 +44,7 @@
           {{chatConversation.day}}
         </p>
         <div *ngFor="let message of chatConversation.messages | orderBy:'created':false" class="chat-conversation-user" [ngClass]="{'me': user.user_id === message.from, 'them': user.user_id !== message.from}">
-          <div class="chat-conversation-message">
+          <div class="chat-conversation-message" [ngClass]="message.type == 'CanteenBot' ? 'canteen-bot-container' : ''">
             <text-message *ngIf="message.type == 'Text' || !message.type" [message]="message"></text-message>
             <canteen-bot-message *ngIf="message.type == 'CanteenBot'" [message]="message" (send)="sendBotMessage($event)"></canteen-bot-message>
           </div>
