@@ -105,7 +105,7 @@
                         <i class="icon-share"></i>
                       </a>
                   <a *ngIf="post.from == this.user.user_id" class="m-r active-emotion-link" href="javascript:;">
-                    Likes {{ post.totalLikes }}
+                    {{ post.totalLikes }} Likes 
                   </a>
                   <a *ngIf="post.from != this.user.user_id && post.liked" class="m-r active-emotion-link" href="javascript:;">
                     Liked

@@ -11,13 +11,11 @@ export class InputEmojiDirective implements OnInit {
     }
 
     ngOnInit() {
-        debugger
         let $this = this;
         /* Here you can write custom initialization code */
 
         /* Listening to the value of ngModel */
         this.ngModel.valueChanges.subscribe(function (value) {
-            debugger
             /* Set any value of your custom control */
             // $(this.element.nativeElement).data("newValue", value);
         });
@@ -73,7 +71,6 @@ export class InputEmojiDirective implements OnInit {
                      */
                     keydown: function (editor, event) {
                         // console.log('event:keydown');
-                        debugger
                     },
                     /**
                      * @param {jQuery} editor EmojioneArea input
@@ -81,7 +78,6 @@ export class InputEmojiDirective implements OnInit {
                      */
                     keypress: function (editor, event) {
                         // console.log('event:keypress');
-                        debugger
                     },
                     /**
                      * @param {jQuery} editor EmojioneArea input
@@ -95,7 +91,6 @@ export class InputEmojiDirective implements OnInit {
                      * @param {Event} event jQuery Event object
                      */
                     change: function (editor, event) {
-                        debugger;
                         console.log('event:change');
                     },
                     /**

@@ -99,6 +99,9 @@ export class ChatListComponent {
       return chat;
     });
 
+    // remove invalid chats rooms
+    this.chats = this.chats.filter(x => x.chatName);
+
     // update chats with 
     this.users = users;
     this.userRooms = rooms;

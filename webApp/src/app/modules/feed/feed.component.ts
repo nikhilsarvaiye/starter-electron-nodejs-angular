@@ -38,7 +38,7 @@ export class FeedComponent implements OnInit {
     }
 
     ngAfterViewInit() {
-
+        DomController.updateContent();
     }
 
     onChatRoomSelect(chats: IChat[]): void {
