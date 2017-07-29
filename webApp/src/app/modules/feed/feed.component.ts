@@ -6,6 +6,7 @@ import { IFeedModel, IPostLikeModel } from './../../../backend/modules/feed/mode
 import { FeedService } from './feed.service'
 import { IChat } from './../chat/chat-list/chat-list.model';
 
+
 @Component({
     selector: 'feed',
     styleUrls: ['./feed.component.scss'],
@@ -35,9 +36,9 @@ export class FeedComponent implements OnInit {
         this.getFeeds();
     }
 
-    ngAfterViewInit() {
-
-    }
+  ngAfterViewInit() {
+    DomController.updateContent();
+  }
 
     onChatRoomSelect(chats: IChat[]): void {
         this.chats = chats;
