@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
-import { InputEmojiDirective } from './directives/emoji.directive';
+import { InputEmojiDirective, InputFacemocDirective } from './directives/emoji.directive';
 import { FilterPipe } from './pipes/filter.pipe';
 import { OrderByPipe } from './pipes/order-by.pipe';
 
@@ -19,6 +19,7 @@ import { ModalModule } from 'ng2-bootstrap';
     FilterPipe,
     OrderByPipe,
     InputEmojiDirective,
+    InputFacemocDirective,
     ModalComponent
   ],
   exports: [
@@ -27,6 +28,7 @@ import { ModalModule } from 'ng2-bootstrap';
     OrderByPipe,
     FilterPipe,
     InputEmojiDirective,
+    InputFacemocDirective,
     ModalComponent
   ]
 })

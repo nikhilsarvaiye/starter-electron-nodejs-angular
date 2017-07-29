@@ -131,3 +131,29 @@ export class InputEmojiDirective implements OnInit {
         }
     }
 }
+
+@Directive({ selector: '[facemoc]' })
+export class InputFacemocDirective implements OnInit {
+
+    @Input() appdAuthHideApplication: string;
+
+    constructor(private readonly _elementRef: ElementRef, private ngModel: NgModel) {
+    }
+
+    ngOnInit() {
+        
+        let $this = this;
+        /* Here you can write custom initialization code */
+
+        /* Listening to the value of ngModel */
+        this.ngModel.valueChanges.subscribe(function (value) {
+            
+            /* Set any value of your custom control */
+            // $(this.element.nativeElement).data("newValue", value);
+        });
+
+        if (($(this._elementRef.nativeElement).faceMocion)) {
+            $(this._elementRef.nativeElement).faceMocion();
+        }
+    }
+}
