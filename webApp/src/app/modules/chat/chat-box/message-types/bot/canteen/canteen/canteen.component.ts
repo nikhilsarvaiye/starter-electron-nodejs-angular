@@ -1,91 +1,70 @@
+import { UserService } from './../../../../../../user/user.service';
+import { CanteenService } from './canteen.service';
 import { Component, ViewEncapsulation, Input, Output, EventEmitter, OnInit } from '@angular/core';
 import * as _ from 'lodash';
+import { IUserModel } from "../../../../../../user/user.model";
 
 @Component({
-    encapsulation: ViewEncapsulation.Emulated,
-    selector: 'canteen',
-    styleUrls: ['./canteen.component.scss'],
-    templateUrl: './canteen.component.html'
+  encapsulation: ViewEncapsulation.Emulated,
+  selector: 'canteen',
+  styleUrls: ['./canteen.component.scss'],
+  templateUrl: './canteen.component.html',
+  providers: [CanteenService]
 })
 
 export class CanteenComponent implements OnInit {
 
-    @Input() data: any = null;
+  @Input() data: any = null;
 
-    @Output() send: EventEmitter<string> = new EventEmitter();
+  @Output() send: EventEmitter<string> = new EventEmitter();
 
-    menuItems;
+  menuItems;
+  actionResponse;
+  showAlert;
+  private user: IUserModel;
 
-    constructor() { }
+  constructor(private _canteenService: CanteenService, public userService: UserService) {
+    this.user = userService.getUserDetails();
+  }
 
-    ngOnInit(): void {
-        console.log("I am in Canteen Component : "+this.data.result.result.action);
-        var items = [
-            /* 1 */
-            {
-                "_id" : "597ad0c872bc8f17085bd887",
-                "title" : "Poha",
-                "price" : 20,
-                "type" : "breakfast"
-            },
+  ngOnInit(): void {
+    this.menuItems = _.map(this.data.result, o => _.extend({ quantity: 1 }, o));
+  }
 
-            /* 2 */
-            {
-                "_id" : "597ad16172bc8f17085bd888",
-                "title" : "Upma",
-                "price" : 10,
-                "type" : "breakfast"
-            },
+  getTotalBill(): number {
+    let sum: number = 0;
+    _.each(this.menuItems, (d) => {
+      sum += d.selected ? (d.quantity * d.price) : 0;
+    });
+    return sum;
+  }
 
-            /* 3 */
-            {
-                "_id" : "597ad17072bc8f17085bd889",
-                "title" : "Missal Pav",
-                "price" : 30,
-                "type" : "breakfast"
-            },
-
-            /* 4 */
-            {
-                "_id" : "597ad17e72bc8f17085bd88a",
-                "title" : "Vada Pav",
-                "price" : 15,
-                "type" : "breakfast"
-            },
-
-            /* 5 */
-            {
-                "_id" : "597ad19172bc8f17085bd88b",
-                "title" : "Banana Shake",
-                "price" : 30,
-                "type" : "Snacks"
-            },
-
-            /* 6 */
-            {
-                "_id" : "597ad1af72bc8f17085bd88c",
-                "title" : "Thali",
-                "price" : 50,
-                "type" : "Lunch"
-            },
-
-            /* 7 */
-            {
-                "_id" : "597ad1cb72bc8f17085bd88d",
-                "title" : "Biryani",
-                "price" : 100,
-                "type" : "Lunch"
-            }
-        ];
-        this.menuItems = items || this.data.result;
+  placeOrder(): void {
+    const order: any = _.filter(this.menuItems, { 'selected': true });
+    if (order.length) {
+      let canteenOrderModel: any = [];
+      order.map(d => {
+        canteenOrderModel.push({
+          menuItem: d.title,
+          menuItemId: d._id,
+          quantity: d.quantity,
+          userId: this.user._id,
+          created: new Date()
+        });
+      });
+      this._canteenService.placeOrder(canteenOrderModel).then(d => {
+        this.actionResponse = "Your order is successfully placed.";
+        this.menuItems = [];
+      });
+    } else {
+      this.actionResponse = 'Please select item to place order.';
     }
+  }
 
-    sendMessage(message): void {
-        if (this.send) {
-            this.send.emit(message);
-        }
+  sendMessage(message): void {
+    if (this.send) {
+      this.send.emit(message);
     }
-
-   
+  }
 }
 

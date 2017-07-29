@@ -66,7 +66,6 @@ export class ChatListComponent {
   }
 
   setChats(users: IUserModel[], rooms: IRoom[], selectRoom?: IRoom): void {
-    debugger
     // remove current user from the users
     users = users.filter(x => x.user_id != this.userService.userDetails.user_id);
 
