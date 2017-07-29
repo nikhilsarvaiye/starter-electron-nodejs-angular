@@ -42,8 +42,8 @@
                     <label class="cls-btn" (click)="placeOrder();">OK</label>
                     <label class="cls-btn bg-grey" (click)="showAlert = false; actionResponse = null;">Cancel</label>
                 </div>
-                <div class="text-danger" *ngIf="actionResponse">{{actionResponse}}</div>
-                <div class="text-info" *ngIf="!menuItems.length">Sorry we didn't find any menu items for requested question.</div>
+                <div class="text-info" *ngIf="actionResponse">{{actionResponse}}</div>
+                <div class="text-info" *ngIf="!actionResponse && !menuItems.length">Sorry we didn't find any menu items for requested question.</div>
             </div>
         </div>
     </div>

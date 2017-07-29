@@ -27,7 +27,7 @@ export class CanteenService {
 
   public placeOrder(order: ICanteenOrderModel): Promise<any> {
     return this.http
-      .post('/order/place', order, this.headers)
+      .post('/api/canteen/order/place', order, this.headers)
       .toPromise()
       .then((res: Response) => {
         return res.json();

@@ -1,5 +1,5 @@
-:host .chat-panel .chat-conversation .chat-conversation-message {
-    background-color: #444;
+:host(.chat-conversation-message) {
+    background-color: inherit !important;
 }
 
 /deep/ .card-header .title {
