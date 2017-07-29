@@ -12,12 +12,15 @@ var router = express.Router();
 
 
 export class FeedRoutes {
-
-    get routes() {
+    
+    get routes () {
         router.post('/post', AuthHandler.Authenticate, FeedApi.saveFeed);
+<<<<<<< HEAD
         router.post('/getFeedById', AuthHandler.Authenticate, FeedApi.getFeedById);
         router.get('/paginate', AuthHandler.Authenticate, FeedApi.paginate);
          router.get('/updateFeed', AuthHandler.Authenticate, FeedApi.saveLikeByUserId);
+=======
+>>>>>>> 572146ad8d463b1beb000b610ffbeaf85d5dae90
         router.get('/external', AuthHandler.Authenticate, FeedApi.saveFeed);
         return router;
     }

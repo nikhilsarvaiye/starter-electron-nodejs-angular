@@ -5,12 +5,13 @@ import { IMessage } from "../../../../../models";
 import { CanteenBotService } from './canteen.bot.service';
 import { PolicyService } from './../policy/policy.service';
 import { HolidayService } from './../holiday/holiday.service';
+import { IPolicyModel } from '../policy/models/policy.model';
 
 export class CanteenBotMessageReply implements IMessageReply {
 
     public sendResponse(type: string, message: IMessage, response: any, saveMessage: boolean, callback: (message: IMessage, saveMessage: boolean) => void, data: any = null): void {
         // prepare result
-        message.message = JSON.stringify({ 
+        message.message = JSON.stringify({
             'action': response.result.action,
             'botType': type,
             'result': data || response,
@@ -27,7 +28,7 @@ export class CanteenBotMessageReply implements IMessageReply {
                 switch (result.result.action) {
                     case 'viewMenu':
                     case 'viewAllMenus':
-                        new CanteenService().search('canteen', (error: any, data: any) => {
+                        new CanteenService().search('', (error: any, data: any) => {
                             this.sendResponse('Canteen', message, result, false, callback, data);
                         });
                         break;
@@ -35,14 +36,14 @@ export class CanteenBotMessageReply implements IMessageReply {
                     case 'holiday':
                     case 'showHolidays':
                     case 'getHolidays':
-                        new HolidayService().search('holiday', (error: any, data: any) => {
+                        new HolidayService().search(result.result.parameters, (error: any, data: any) => {
                             this.sendResponse('Holiday', message, result, true, callback, data);
                         });
                         break;
 
                     case 'policy':
                     case 'viewPolicies':
-                        new PolicyService().search('policy', (error: any, data: any) => {
+                        new PolicyService().search(result.result.parameters, (error: any, data: any) => {
                             this.sendResponse('Policy', message, result, true, callback, data);
                         });
                         break;

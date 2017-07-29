@@ -9,50 +9,60 @@
   <quick-launch-apps></quick-launch-apps>
 
   <profile-card></profile-card>
-
-  <!--<main-nav></main-nav>-->
-
+<nav role="navigation">
+<ul class="nav">
+  <li>
+    <a>
+   <i class="fa fa-file-text" aria-hidden="true"></i>
+    <span> Select Chart Type</span>
+     </a>
+  </li>
+ 
+  <li>
+ <a (click)="changeSelectedChart(1)" >
+   <i class="icon-compass"></i>
+   <span>Employee Allocation</span>
+ </a>
+  </li>
+    <li>
+ <a (click)="changeSelectedChart(2)" >
+   <i class="icon-compass"></i>
+   <span>Employee-Availability</span>
+ </a>
+  </li>
+    <li>
+ <a (click)="changeSelectedChart(3)" >
+   <i class="icon-compass"></i>
+   <span>Productive Hours</span>
+ </a>
+  </li>
+    <li>
+ <a (click)="changeSelectedChart(4)" >
+   <i class="icon-compass"></i>
+   <span>Sentiment Analysis</span>
+ </a>
+  </li>
+  </ul>
+  </nav>
 </div>
 <!-- /sidebar panel -->
-
 <div class="main-panel">
 
   <div class="header navbar">
     <header></header>
   </div>
   <div class="main-content">
-    <table>
-      <tr>
-        <td>
-          <tr>
-            <select [(ngModel)]="selectedfilterValue" (ngModelChange)="onOptionChange($event)">     
-        <option *ngFor="let x of chartFilterOptions" [value]="x.id">{{x.name}}</option>
-    </select>
-          </tr>
-          <tr>
-            <chart [options]="availabilityChart"></chart>
-          </tr>
-        </td>
-        <td>
-          <tr>
-            <select [(ngModel)]="selectedValue" (ngModelChange)="onChange($event)">     
-        <option *ngFor="let x of departments" [value]="x.id">{{x.name}}</option>
-    </select>
-          </tr>
-          <tr>
-            <chart [options]="employeeAllocationChart"></chart>
-          </tr>
-        </td>
-      </tr>
-      <tr>
-        <tr>
-          <td>
-            <chart [options]="productivityChart"></chart>
-          </td>
-          <td>
-            <chart [options]="sentimentStats"></chart>
-          </td>
-        </tr>
-    </table>
+    <div *ngIf="selectedChart == 1">
+      <emp-allocation></emp-allocation>
+    </div>
+    <div *ngIf="selectedChart == 2">
+      <emp-availability></emp-availability>
+    </div>
+    <div *ngIf="selectedChart == 3">
+      <prod-hours></prod-hours>
+    </div>
+    <div *ngIf="selectedChart == 4">
+      <sentiment-analysis></sentiment-analysis>
+    </div>
   </div>
 </div>

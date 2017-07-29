@@ -19,7 +19,6 @@ export class FeedService {
     constructor(private http: Http, private router: Router, private authService: AuthService) {
         this.headers = new Headers();
         this.headers.append('Content-Type', 'application/json')
-        this.headers = this.authService.getAuthHeaders(this.headers);
         this.requestOptions = new RequestOptions({ headers: this.headers });
     }
 
@@ -27,13 +26,14 @@ export class FeedService {
         return new Observable(observer => {
             this.http.post(`/api/feed/post`, post, this.headers)
                 .subscribe((res: Response) => {
-                    observer.next(res.json().result || null)
+                    observer.next(res.json().result || [])
                 }, (error) => {
                     PromiseErrorHandler.handleError(error);
                 });
         });
     }
     
+<<<<<<< HEAD
   updateFeed(post: IFeedModel): Observable<IFeedModel> {
         return new Observable(observer => {
             this.http.post(`/api/feed/updateFeed`, post, this.headers)
@@ -46,8 +46,11 @@ export class FeedService {
     }
 
     getUserFeeds(userId: string, pageSize: number, pageNumber: number): Observable<IFeedModel[]> {
+=======
+    getUserFeeds(userId: string): Observable<IFeedModel[]> {
+>>>>>>> 572146ad8d463b1beb000b610ffbeaf85d5dae90
         return new Observable(observer => {
-            this.http.get(`/api/feed/paginate?userId=${userId}&pageSize=${pageSize}&pageNumber=${pageNumber}`, this.headers)
+            this.http.get(`/api/feed?userId=${userId}`, this.headers)
                 .subscribe((res: Response) => {
                     observer.next(res.json().result || [])
                 }, (error) => {

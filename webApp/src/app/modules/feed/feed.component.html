@@ -56,10 +56,10 @@
             </div>
           </div>
         </div>
-        <div class="col-sm-9  posts-container">
+        <div class="col-sm-9">
           <div class="card bg-primary no-border composer">
             <form (ngSubmit)="post()" #loginForm="ngForm" class="form-layout">
-              <div class="card-block post-box">
+              <div class="card-block">
                 <textarea [(ngModel)]="newPost.text" name="post-input" placeholder="What's on your mind" rows="3" class="form-control shadow no-border"></textarea>
                 <div class="composer-options">
                   <button class="btn" type="button">
@@ -74,7 +74,7 @@
                   <button class="btn" type="button">
                       <i class="icon-clock"></i>
                     </button>
-                  <button type="submit" class="btn btn-default btn-block post-button">
+                  <button type="submit" class="btn btn-default btn-block post">
                     <span>Post</span>
                 </button>
                 </div>

@@ -54,7 +54,7 @@ export class ChatDomController {
                      */
                     keydown: function (editor, event) {
                         // console.log('event:keydown');
-                        
+                        debugger
                     },
                     /**
                      * @param {jQuery} editor EmojioneArea input
@@ -62,7 +62,7 @@ export class ChatDomController {
                      */
                     keypress: function (editor, event) {
                         // console.log('event:keypress');
-                        
+                        debugger
                         if (keyPress) {
                             keyPress(event);
                         }
@@ -79,7 +79,7 @@ export class ChatDomController {
                      * @param {Event} event jQuery Event object
                      */
                     change: function (editor, event) {
-                        ;
+                        debugger;
                         console.log('event:change');
                     },
                     /**

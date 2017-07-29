@@ -11,5 +11,6 @@
                 <p class="description">{{policy.description}}</p>
             </li>
         </ul>
+        <div class="text-info" *ngIf="!policies.length">Sorry we didn't find any policies for requested question.</div>
     </div>
 </div>

@@ -16,40 +16,29 @@ export class FeedComponent implements OnInit {
     private posts: IFeedModel[];
     private newPost: IFeedModel;
 
-    private pageNumber: number;
-    private pageSize: number;
-
     constructor(private _userService: UserService, private _feedService: FeedService) {
         this.user = _userService.getUserDetails();
         this.newPost = <IFeedModel>{};
-        this.pageNumber = 1;
-        this.pageSize = 20;
     }
 
     public ngOnInit() {
         console.log('hello `Feed` component');
-        this.getFeeds();
     }
 
     ngAfterViewInit() {
 
     }
 
-    getFeeds(pageNumber?: number) {
-        pageNumber = pageNumber || this.pageNumber;
-        this._feedService.getUserFeeds(this.user.user_id, this.pageSize, pageNumber).subscribe(feeds => {
+    getFeeds() {
+        this._feedService.getUserFeeds(this.user.user_id).subscribe(feeds => {
             this.posts = feeds;
         });
     }
 
     post() {
+        debugger
         if (this.newPost && this.newPost.text) {
-            this.newPost.from = this.user.user_id;
-            this.newPost.comments = [];
-            this.newPost.images = [];
-            this.newPost.likes = [];
             this._feedService.postFeed(this.newPost).subscribe(post => {
-                this.posts = this.posts || [];
                 this.posts.push(post);
                 this.newPost = <IFeedModel>{};
             });

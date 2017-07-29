@@ -1,6 +1,6 @@
-/* body {
+body {
     overflow: hidden;
-} */
+}
 @media screen and (min-width: 768px) {
     .main-panel {
         min-height: inherit;    
