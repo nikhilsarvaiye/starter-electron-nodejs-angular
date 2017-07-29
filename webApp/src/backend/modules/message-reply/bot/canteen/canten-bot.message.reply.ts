@@ -33,6 +33,12 @@ export class CanteenBotMessageReply implements IMessageReply {
                         });
                         break;
 
+                    case 'viewOrders':
+                        new CanteenService().searchOrders('', (error: any, data: any) => {
+                            this.sendResponse('Canteen', message, result, false, callback, data);
+                        });
+                        break;
+
                     case 'holiday':
                     case 'showHolidays':
                     case 'getHolidays':
@@ -46,6 +52,10 @@ export class CanteenBotMessageReply implements IMessageReply {
                         new PolicyService().search(result.result.parameters, (error: any, data: any) => {
                             this.sendResponse('Policy', message, result, true, callback, data);
                         });
+                        break;
+
+                    case 'viewAttendance':
+                        this.sendResponse('Attendance', message, result, false, callback);
                         break;
 
                     default:

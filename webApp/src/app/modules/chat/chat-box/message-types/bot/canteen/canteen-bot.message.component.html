@@ -2,6 +2,7 @@
   <holiday *ngIf="botType == 'Holiday'" [data]="data"></holiday>
   <policy *ngIf="botType == 'Policy'" [data]="data"></policy>
   <canteen *ngIf="botType == 'Canteen'" [data]="data"></canteen>
+  <attendance *ngIf="botType == 'Attendance'" [data]="data"></attendance>
   <div *ngIf="!botType">
     <p>{{data ? data.message : message.message}}</p>
   </div>

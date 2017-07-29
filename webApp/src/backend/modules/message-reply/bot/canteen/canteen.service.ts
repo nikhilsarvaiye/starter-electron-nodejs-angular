@@ -97,6 +97,20 @@ export class CanteenService extends BaseService<ICanteenItemModel> {
     }
 
     /**
+    * @param {string} key
+    * @param {(error:any,result:any)=>void} callback
+    */
+    search(key: string, callback: (error: any, result: any) => void) {
+        const selectFields = '';
+        this.repository.find({
+            $or: [
+                { title: { "$regex": key, "$options": "i" } },
+                { type: { "$regex": key, "$options": "i" } }
+            ]
+        }, callback);
+    }
+
+    /**
      * @param  {ICanteenOrderModel} order
      * @param  {(error:any,result:any)=>void} callback
      */
@@ -140,16 +154,15 @@ export class CanteenService extends BaseService<ICanteenItemModel> {
     * @param {string} key
     * @param {(error:any,result:any)=>void} callback
     */
-    search(key: string, callback: (error: any, result: any) => void) {
+    searchOrders(key: string, callback: (error: any, result: any) => void) {
         const selectFields = '';
         this.repository.find({
             $or: [
-                { title: { "$regex": key, "$options": "i" } },
+                { userId: { "$regex": key, "$options": "i" } },
                 { type: { "$regex": key, "$options": "i" } }
             ]
         }, callback);
     }
-
 }
 
 Object.seal(CanteenService);
