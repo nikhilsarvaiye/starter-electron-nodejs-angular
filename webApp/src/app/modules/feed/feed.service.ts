@@ -33,7 +33,6 @@ export class FeedService {
         });
     }
     
-<<<<<<< HEAD
   updateFeed(post: IFeedModel): Observable<IFeedModel> {
         return new Observable(observer => {
             this.http.post(`/api/feed/updateFeed`, post, this.headers)
@@ -46,9 +45,6 @@ export class FeedService {
     }
 
     getUserFeeds(userId: string, pageSize: number, pageNumber: number): Observable<IFeedModel[]> {
-=======
-    getUserFeeds(userId: string): Observable<IFeedModel[]> {
->>>>>>> 572146ad8d463b1beb000b610ffbeaf85d5dae90
         return new Observable(observer => {
             this.http.get(`/api/feed?userId=${userId}`, this.headers)
                 .subscribe((res: Response) => {
