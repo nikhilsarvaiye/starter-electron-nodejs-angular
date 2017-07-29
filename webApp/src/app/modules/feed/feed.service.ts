@@ -33,10 +33,13 @@ export class FeedService {
                 });
         });
     }
-    
-  updateFeed(post: IFeedModel): Observable<IFeedModel> {
+
+    addLike(postId: string, userId: string): Observable<IFeedModel> {
         return new Observable(observer => {
-            this.http.post(`/api/feed/updateFeed`, post, this.headers)
+            this.http.post(`/api/feed/addLike`, {
+                postId: postId,
+                userId: userId
+            }, this.headers)
                 .subscribe((res: Response) => {
                     observer.next(res.json().result || null)
                 }, (error) => {

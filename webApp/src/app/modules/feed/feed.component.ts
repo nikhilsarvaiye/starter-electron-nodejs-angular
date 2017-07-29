@@ -76,32 +76,11 @@ export class FeedComponent implements OnInit {
     }
 
     like(post: IFeedModel) {
-<<<<<<< HEAD
-        
-=======
-        this.newPost.from = this.user.user_id;
-        this.newPost.likes = this.newPost.likes || <IPostLikeModel[]>[];
-        this.newPost.likes.push(<IPostLikeModel>{
-            emotion: 'Like',
-            userId: this.user.user_id
+        debugger
+        this._feedService.addLike(post._id, this.user.user_id).subscribe(likesCount => {
+            (<any>this.newPost).likesCount = likesCount;
         });
-        this._feedService.updateFeed(this.newPost).subscribe(post => {
-            this.posts = this.posts || [];
-            this.posts.push(post);
-            this.newPost = <IFeedModel>{};
-        });
->>>>>>> 9ab109649cb37f4d930ae5263d37d6a51ba77a17
     }
-
-    /*
-    this.newPost.from = this.user.user_id;
-        this.newPost.likes = [];
-        this._feedService.updateFeed(this.newPost).subscribe(post => {
-            this.posts = this.posts || [];
-            this.posts.push(post);
-            this.newPost = <IFeedModel>{};
-        });
-    */
 
     loadComments(post: IFeedModel) {
 

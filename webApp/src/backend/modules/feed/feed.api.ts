@@ -41,11 +41,10 @@ export class FeedApi {
         }
     }
 
-    static saveLikeByUserId(req: express.Request, res: express.Response, next): void {
+    static like(req: express.Request, res: express.Response, next): void {
         let correlationId = ApiRequest.CorrelationId.new();
         try {
-            var body = <IFeedModel>req.body;
-            new FeedService().update(body.id, body, function (error: any, result: any) {
+            new FeedService().like(req.body.postId, req.body.userId, function (error: any, result: any) {
                 console.log(error);
                 if (error) return next(error);
                 res.status(200).send(new ApiResponse(correlationId, result));
