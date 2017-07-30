@@ -38,9 +38,15 @@ export class FeedComponent implements OnInit {
         this.getFeeds();
     }
 
+<<<<<<< HEAD
   ngAfterViewInit() {
     DomController.updateContent();
   }
+=======
+    ngAfterViewInit() {
+        DomController.updateContent();
+    }
+>>>>>>> b7528914241d03a75ba81f31872a5e27c7b7fa5f
 
     onChatRoomSelect(chats: IChat[]): void {
         this.chats = chats;
