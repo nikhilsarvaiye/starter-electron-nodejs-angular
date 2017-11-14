@@ -7,7 +7,8 @@ import { ReactiveFormsModule } from "@angular/forms";
 import { Http, HttpModule, XHRBackend, RequestOptions } from '@angular/http';
 import { Router, RouterModule, PreloadAllModules } from '@angular/router';
 import { IdlePreload, IdlePreloadModule } from '@angularclass/idle-preload'
-import { AdalService } from 'ng2-adal/core';
+import { AdalService } from 'ng2-adal/dist/core';
+
 // import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@ngx-config/core';
 import { ModalModule } from 'ng2-bootstrap';
 

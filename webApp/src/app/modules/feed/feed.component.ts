@@ -38,15 +38,9 @@ export class FeedComponent implements OnInit {
         this.getFeeds();
     }
 
-<<<<<<< HEAD
-  ngAfterViewInit() {
-    DomController.updateContent();
-  }
-=======
     ngAfterViewInit() {
         DomController.updateContent();
     }
->>>>>>> b7528914241d03a75ba81f31872a5e27c7b7fa5f
 
     onChatRoomSelect(chats: IChat[]): void {
         this.chats = chats;
@@ -77,7 +71,7 @@ export class FeedComponent implements OnInit {
     post() {
         if (this.newPost && this.newPost.text) {
             this.newPost.from = this.user.user_id;
-            this.newPost.userName=this.user.name;
+            this.newPost.userName = this.user.name;
             this.newPost.comments = [];
             this.newPost.images = [];
             this.newPost.likes = [];

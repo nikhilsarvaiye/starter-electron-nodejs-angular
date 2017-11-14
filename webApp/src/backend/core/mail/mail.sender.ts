@@ -93,7 +93,7 @@ export class Mail {
 
     private getDefaultMailOptions(): SendMailOptions {
         let defaultMailOptions = EmailConfig.EmailOptions;
-        return defaultMailOptions;
+        return <SendMailOptions>defaultMailOptions;
     }
 }
 
