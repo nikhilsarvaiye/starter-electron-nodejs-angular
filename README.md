@@ -1,34 +1,8 @@
-# electron-with-express
+# starter-electron-nodejs-angular
 
-A simple project demonstrating how to spawn an Express app from Electron as well
-as providing server logs directly in the Electron app.
+A starter project demonstrating how to spawn an Express app from Electron, node JS best practices and angular on front
 
 Express App:
-
-![Express-App](screenshots/express-app.png)
-
-Press 'F1' to show the server log:
-
-![Server-Log](screenshots/server-log.png)
-
-## Dependencies
-
-#### Before start: Please note that this approach is intended to use in windows platform, any other OS approach would need some changes, contributions are very welcome
-
-We'll need a copy of the `Node.exe` and `Node.lib`: [https://nodejs.org/dist/v7.2.1/win-x64/](https://nodejs.org/dist/v7.2.1/win-x64/)
-
-After downloading a copy of this repository place them in the root of the code
-folder. When the Electron app starts it will spawn the Express app using an external
-copy of Node. This allows the Express app to run outside the Electron process.
-
-Here is a screenshot of the file layout:
-
-![File-Layout](screenshots/file-layout.png)
-
-## Additional Information
-
-The `express-app` folder is just a vanilla Express generated app using
-`express-generator`.
 
 ## How to run
 
