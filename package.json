@@ -13,7 +13,7 @@
     "start": "node start-electron.js"
   },
   "dependencies": {
-    "electron": "^1.6.7",
+    "electron": "^13.6.6",
     "electron-notifications": "^1.0.0",
     "jquery": "^3.2.1",
     "keymaster": "^1.6.2",
