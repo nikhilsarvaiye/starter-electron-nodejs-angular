@@ -142,6 +142,6 @@
     "ts-helpers": "^1.1.2",
     "url-loader": "^0.5.9",
     "wdt-emoji-bundle": "^0.2.1",
-    "webpack-dev-server": "^2.4.5"
+    "webpack-dev-server": "^4.11.1"
   }
 }
