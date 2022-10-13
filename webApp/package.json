@@ -84,7 +84,7 @@
     "ng2-adal": "^1.0.3",
     "ng2-bootstrap": "^1.6.3",
     "ng2-highcharts": "^1.0.0",
-    "node-sass": "^4.5.3",
+    "node-sass": "^7.0.0",
     "nodemailer": "^4.0.1",
     "nodemailer-smtp-transport": "^2.7.4",
     "passport": "^0.3.2",
