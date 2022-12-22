@@ -77,7 +77,7 @@
     "jquery": "^3.2.1",
     "js.clone": "^0.0.3",
     "json-loader": "^0.5.4",
-    "jsonwebtoken": "^7.4.1",
+    "jsonwebtoken": "^9.0.0",
     "moment": "^2.18.1",
     "mongoose": "^4.10.7",
     "morgan": "^1.8.2",
