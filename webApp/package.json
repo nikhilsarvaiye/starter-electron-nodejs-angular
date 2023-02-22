@@ -122,7 +122,7 @@
     "@types/webpack": "^2.2.16",
     "@types/winston": "^2.3.3",
     "awesome-typescript-loader": "^3.2.1",
-    "bootstrap-sass": "^3.3.7",
+    "bootstrap-sass": "^3.4.1",
     "concurrently": "^3.4.0",
     "copy-webpack-plugin": "^4.0.1",
     "dotenv-cli": "^1.4.0",
